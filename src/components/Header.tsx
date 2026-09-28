@@ -1,5 +1,17 @@
 import React from 'react';
 import { TabType } from '../types/formulation';
+import {
+  FlaskConical,
+  Layers,
+  BookOpen,
+  Search,
+  Terminal,
+  Sparkles,
+  ArrowLeft,
+  Play,
+  CheckCircle2,
+  Atom
+} from 'lucide-react';
 
 interface HeaderProps {
   currentTab: TabType;
@@ -9,6 +21,8 @@ interface HeaderProps {
   titleContext?: string;
   subtitleContext?: string;
   showBack?: boolean;
+  isDemoMode?: boolean;
+  onToggleDemo?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,128 +32,150 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenTerminal,
   titleContext,
   subtitleContext,
-  showBack = false
+  showBack = false,
+  isDemoMode = false,
+  onToggleDemo
 }) => {
   return (
-    <header className="fixed top-0 w-full z-50 pt-safe bg-[#0d1310]/90 backdrop-blur-xl border-b border-[#1f382b]/60 shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
-      <div className="h-16 px-margin flex items-center justify-between gap-2 max-w-7xl mx-auto">
-        {/* Left Brand / Nav */}
-        <div className="flex items-center gap-2 min-w-0">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-[#090e0c]/90 backdrop-blur-xl border-b border-[#1b2b22] transition-colors">
+      <div className="h-16 px-4 sm:px-6 max-w-7xl mx-auto flex items-center justify-between gap-3">
+        {/* Brand & Context */}
+        <div className="flex items-center gap-3 min-w-0">
           {showBack && (
             <button
               onClick={() => onNavigate('candidates')}
               aria-label="Navigate back"
-              className="w-9 h-9 flex items-center justify-center rounded-lg text-[#8da396] hover:text-[#00f5a0] hover:bg-[#131d18] border border-transparent hover:border-[#1f382b] transition-all shrink-0 cursor-pointer"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-[#8da396] hover:text-[#10b981] hover:bg-[#121c17] border border-[#1b2b22] transition-all shrink-0 cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[18px]">arrow_back_ios_new</span>
+              <ArrowLeft className="w-4 h-4" />
             </button>
           )}
 
-          {/* VeganForm.AI Logo Brand */}
-          <div 
-            onClick={() => onNavigate('product')} 
-            className="flex items-center gap-2 cursor-pointer select-none shrink-0 group"
-            title="VeganForm.AI Food R&D Platform"
+          {/* VeganForm AI Platform Logo */}
+          <div
+            onClick={() => onNavigate('product')}
+            className="flex items-center gap-2.5 cursor-pointer select-none shrink-0 group"
+            title="VeganForm AI - Computational Food R&D Platform"
           >
-            {/* Bioluminescent Shield Molecular Node Icon */}
-            <div className="w-8 h-8 rounded-full bg-[#0a0f0d] border border-[#00f5a0]/50 flex items-center justify-center relative shadow-[0_0_12px_rgba(0,245,160,0.3)] group-hover:shadow-[0_0_18px_rgba(0,245,160,0.6)] transition-all">
-              <svg className="w-5 h-5 text-[#00f5a0]" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L4 5V11C4 16.5 7.4 21.6 12 23C16.6 21.6 20 16.5 20 11V5L12 2Z" stroke="#00f5a0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="#0d1411" />
-                <circle cx="12" cy="7" r="1.5" fill="#00f5a0" />
-                <circle cx="8.5" cy="12" r="1.5" fill="#38bdf8" />
-                <circle cx="15.5" cy="14" r="1.5" fill="#00f5a0" />
-                <line x1="12" y1="7" x2="8.5" y2="12" stroke="#00f5a0" strokeWidth="1.2" strokeLinecap="round" />
-                <line x1="8.5" y1="12" x2="15.5" y2="14" stroke="#00f5a0" strokeWidth="1.2" strokeLinecap="round" />
-              </svg>
+            <div className="w-8 h-8 rounded-lg bg-[#0e1713] border border-[#10b981]/40 flex items-center justify-center relative shadow-[0_0_12px_rgba(16,185,129,0.2)] group-hover:border-[#10b981] transition-all">
+              <Atom className="w-4 h-4 text-[#10b981] animate-spin-slow" />
             </div>
-            
+
             <div className="flex flex-col">
               <div className="flex items-center gap-1 font-bold text-sm tracking-tight text-white leading-none">
                 <span>VeganForm</span>
-                <span className="text-[#00f5a0] drop-shadow-[0_0_6px_rgba(0,245,160,0.8)] font-mono">.AI</span>
+                <span className="text-[#10b981] font-mono text-xs">AI</span>
               </div>
-              <span className="font-mono text-[8px] text-[#8da396] tracking-[0.18em] uppercase leading-tight font-medium">
-                FOOD R&amp;D PLATFORM
+              <span className="font-mono text-[9px] text-[#8da396] tracking-[0.14em] uppercase leading-tight font-medium mt-0.5">
+                COMPUTATIONAL FOOD R&amp;D
               </span>
             </div>
           </div>
 
-          {/* Subtitle / Console context badge */}
-          <div className="hidden sm:flex flex-col min-w-0 pl-3 border-l border-[#1f382b]/60">
-            <div className="flex items-center gap-1.5">
-              <span className="px-1.5 py-0.5 rounded bg-[#0b3d2e] text-[#00f5a0] font-mono text-[9px] tracking-wider shrink-0 border border-[#00f5a0]/30 font-semibold uppercase">
-                {titleContext || (currentTab === 'detail' ? 'Candidate Detail' : 'AGENT v2.4')}
-              </span>
-            </div>
-            <span className="font-mono text-[11px] text-[#8da396] truncate">
-              {subtitleContext || (currentTab === 'detail' ? 'Telemetry Live' : 'Candidates Console')}
+          {/* Section Breadcrumb Context Badge (Desktop) */}
+          <div className="hidden md:flex items-center pl-3 border-l border-[#1b2b22]">
+            <span className="px-2 py-0.5 rounded-md bg-[#121c17] text-[#10b981] font-mono text-[10px] tracking-wider border border-[#10b981]/25 font-semibold uppercase flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+              {titleContext || 'R&D SUITE'}
             </span>
           </div>
         </div>
 
-        {/* Right Action Icons */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          {/* Quick Tab Quick Switchers on Desktop */}
-          <div className="hidden lg:flex items-center gap-1 bg-[#131d18] p-1 rounded-lg border border-[#1f382b]/60 text-xs font-mono">
+        {/* Center / Right Navigation Controls */}
+        <div className="flex items-center gap-2">
+          {/* Desktop Nav Items */}
+          <nav className="hidden lg:flex items-center bg-[#0e1612] p-1 rounded-xl border border-[#1b2b22] text-xs font-mono">
             <button
               onClick={() => onNavigate('product')}
-              className={`px-2.5 py-1 rounded transition-colors ${currentTab === 'product' ? 'bg-[#00f5a0]/20 text-[#00f5a0] font-semibold border border-[#00f5a0]/40' : 'text-[#8da396] hover:text-white'}`}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+                currentTab === 'product'
+                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
+                  : 'text-[#8da396] hover:text-white'
+              }`}
             >
-              Overview
+              <span>Overview</span>
             </button>
+
             <button
               onClick={() => onNavigate('formulate')}
-              className={`px-2.5 py-1 rounded transition-colors ${currentTab === 'formulate' ? 'bg-[#00f5a0]/20 text-[#00f5a0] font-semibold border border-[#00f5a0]/40' : 'text-[#8da396] hover:text-white'}`}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+                currentTab === 'formulate'
+                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
+                  : 'text-[#8da396] hover:text-white'
+              }`}
             >
-              Formulate
+              <FlaskConical className="w-3.5 h-3.5" />
+              <span>Workspace</span>
             </button>
+
             <button
               onClick={() => onNavigate('candidates')}
-              className={`px-2.5 py-1 rounded transition-colors ${currentTab === 'candidates' || currentTab === 'detail' ? 'bg-[#00f5a0]/20 text-[#00f5a0] font-semibold border border-[#00f5a0]/40' : 'text-[#8da396] hover:text-white'}`}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+                currentTab === 'candidates' || currentTab === 'detail'
+                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
+                  : 'text-[#8da396] hover:text-white'
+              }`}
             >
-              Candidates
+              <Layers className="w-3.5 h-3.5" />
+              <span>Candidates</span>
             </button>
+
             <button
               onClick={() => onNavigate('knowledge')}
-              className={`px-2.5 py-1 rounded transition-colors ${currentTab === 'knowledge' ? 'bg-[#00f5a0]/20 text-[#00f5a0] font-semibold border border-[#00f5a0]/40' : 'text-[#8da396] hover:text-white'}`}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+                currentTab === 'knowledge'
+                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
+                  : 'text-[#8da396] hover:text-white'
+              }`}
             >
-              Knowledge
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Botanical Library</span>
             </button>
-            <button
-              onClick={() => onNavigate('demo')}
-              className={`px-2.5 py-1 rounded transition-colors ${currentTab === 'demo' ? 'bg-[#00f5a0]/20 text-[#00f5a0] font-semibold border border-[#00f5a0]/40' : 'text-[#8da396] hover:text-white'}`}
-            >
-              Extruder Sim
-            </button>
-          </div>
+          </nav>
 
-          {/* Search Trigger */}
+          {/* Interactive Demo Mode Toggle CTA Button */}
           <button
-            onClick={onOpenSearch}
-            aria-label="Diagnostic telemetry search"
-            className="w-9 h-9 flex items-center justify-center rounded-lg text-[#8da396] hover:text-[#00f5a0] hover:bg-[#131d18] border border-[#1f382b]/40 transition-colors cursor-pointer"
-            title="Search telemetry & database"
+            onClick={() => onToggleDemo ? onToggleDemo() : onNavigate('demo')}
+            className={`px-3 py-1.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer border ${
+              isDemoMode
+                ? 'bg-amber-950/70 border-amber-500/60 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+                : 'bg-[#14231b] hover:bg-[#182d22] border-[#10b981]/40 text-[#10b981] shadow-[0_0_10px_rgba(16,185,129,0.15)]'
+            }`}
+            title={isDemoMode ? 'Click to exit Demo Mode' : 'Activate offline deterministic demonstration mode'}
           >
-            <span className="material-symbols-outlined text-[19px]">search</span>
+            {isDemoMode ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping shrink-0" />
+                <span>DEMO MODE ACTIVE</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-3.5 h-3.5 fill-[#10b981]" />
+                <span className="hidden sm:inline">Interactive Demo</span>
+                <span className="sm:hidden">Demo</span>
+              </>
+            )}
           </button>
 
-          {/* Terminal Console Trigger */}
+          {/* Telemetry Search Modal Button */}
+          <button
+            onClick={onOpenSearch}
+            aria-label="Diagnostic search"
+            className="w-9 h-9 flex items-center justify-center rounded-xl text-[#8da396] hover:text-[#10b981] hover:bg-[#121c17] border border-[#1b2b22] transition-colors cursor-pointer"
+            title="Search formulations & ingredients"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+
+          {/* Laboratory System Terminal Trigger */}
           <button
             onClick={onOpenTerminal}
             aria-label="Laboratory system terminal"
-            className="w-9 h-9 flex items-center justify-center rounded-lg text-[#8da396] hover:text-[#00f5a0] hover:bg-[#131d18] border border-[#1f382b]/40 transition-colors cursor-pointer"
-            title="Open CUDA-BIO synthesis terminal"
+            className="w-9 h-9 flex items-center justify-center rounded-xl text-[#8da396] hover:text-[#10b981] hover:bg-[#121c17] border border-[#1b2b22] transition-colors cursor-pointer"
+            title="Open In-Silico Synthesis Terminal"
           >
-            <span className="material-symbols-outlined text-[19px]">terminal</span>
+            <Terminal className="w-4 h-4" />
           </button>
-
-          {/* User / Lab Investigator Avatar */}
-          <div 
-            className="w-8 h-8 rounded-full bg-[#1e2d25] border border-[#00f5a0]/40 flex items-center justify-center shrink-0 ml-1 shadow-[0_0_10px_rgba(0,245,160,0.2)]"
-            title="Lead Biochemist • Pilot Lab 4"
-          >
-            <span className="material-symbols-outlined text-[#00f5a0] text-[18px]">biotech</span>
-          </div>
         </div>
       </div>
     </header>

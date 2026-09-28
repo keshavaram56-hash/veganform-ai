@@ -18,15 +18,14 @@ export interface FormulationResponse {
 }
 
 export const SIMULATION_STEPS = [
-  'Analyzing original product...',
-  'Mapping ingredient functions...',
-  'Finding vegan alternatives...',
-  'Generating candidate formulations...',
-  'Calculating nutrition...',
-  'Estimating cost...',
-  'Evaluating sustainability...',
-  'Optimizing candidates...',
-  'Ranking formulations...'
+  'ANALYZING TARGET PRODUCT',
+  'IDENTIFYING FUNCTIONAL INGREDIENTS',
+  'OPTIMIZING FORMULATION',
+  'CHECKING CONSTRAINTS',
+  'CALCULATING NUTRITION',
+  'ESTIMATING COST',
+  'ANALYZING SUSTAINABILITY',
+  'RANKING CANDIDATES'
 ];
 
 /**

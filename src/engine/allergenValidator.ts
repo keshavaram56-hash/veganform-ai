@@ -280,11 +280,17 @@ export function repairFormulation(
   }
 
   if (noNuts) {
-    repairedName = repairedName.replace(/cashew/gi, 'Coconut')
-      .replace(/almond/gi, 'Botanical')
-      .replace(/nut/gi, 'Botanical');
-    repairedBaseIsolate = repairedBaseIsolate.replace(/cashew/gi, 'Coconut')
-      .replace(/almond/gi, 'Coconut');
+    repairedName = repairedName
+      .replace(/\bcashew\b/gi, 'Coconut')
+      .replace(/\balmond\b/gi, 'Oat')
+      .replace(/\bwalnut\b/gi, 'Sunflower')
+      .replace(/\bpeanut\b/gi, 'Sunflower')
+      .replace(/\btree\s*nuts?\b/gi, 'Seeds')
+      .replace(/\bnuts?\b/gi, 'Botanical');
+    repairedBaseIsolate = repairedBaseIsolate
+      .replace(/\bcashew\b/gi, 'Coconut')
+      .replace(/\balmond\b/gi, 'Coconut')
+      .replace(/\bnuts?\b/gi, 'Seed & Botanical');
   }
 
   // Recalculate deterministic nutrition, cost, sustainability

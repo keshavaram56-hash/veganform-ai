@@ -4,28 +4,28 @@
   --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --color-surface-container-lowest: #0a0f0d;
-  --color-surface-container-low: #131d18;
-  --color-surface-container: #18241e;
-  --color-surface-container-high: #1e2d25;
-  --color-surface-container-highest: #26382f;
-  --color-surface: #0d1310;
-  --color-outline-variant: #1f382b;
-  --color-outline: #41594d;
+  --color-surface-container-lowest: #090e0c;
+  --color-surface-container-low: #0c1410;
+  --color-surface-container: #121d17;
+  --color-surface-container-high: #182820;
+  --color-surface-container-highest: #22382c;
+  --color-surface: #090e0c;
+  --color-outline-variant: #1b2b22;
+  --color-outline: #2d4537;
   --color-on-surface: #dfe4e0;
   --color-on-surface-variant: #8da396;
-  --color-primary: #00f5a0;
-  --color-primary-container: #00f5a0;
-  --color-on-primary: #002111;
-  --color-on-primary-container: #003921;
-  --color-secondary: #4edea3;
-  --color-secondary-container: #00a572;
+  --color-primary: #10b981;
+  --color-primary-container: #059669;
+  --color-on-primary: #052e16;
+  --color-on-primary-container: #064e3b;
+  --color-secondary: #06b6d4;
+  --color-secondary-container: #0891b2;
 }
 
 @layer base {
   body {
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #0a0f0d;
+    background-color: #090e0c;
     color: #dfe4e0;
   }
   
@@ -54,15 +54,41 @@
 
 /* Glowing Bio-Tech Utilities */
 .glow-primary {
-  box-shadow: 0 0 16px rgba(0, 245, 160, 0.35);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
 }
 
 .glow-primary-lg {
-  box-shadow: 0 0 24px rgba(0, 245, 160, 0.45);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.45);
 }
 
 .glow-text-primary {
-  text-shadow: 0 0 10px rgba(0, 245, 160, 0.5);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
+}
+
+@keyframes bounceSubtle {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -4px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 2.5s ease-in-out infinite;
 }
 
 /* Custom Spacing shorthands */
@@ -80,7 +106,7 @@
 
 @media (min-width: 1024px) {
   .px-margin {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }

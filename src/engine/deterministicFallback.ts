@@ -205,9 +205,11 @@ export function generateDeterministicFormulations(
         ]
       },
       {
-        name: 'Soy Milk Protein Melt Curd',
+        name: hasSoyAllergen ? 'Pea & Tapioca Melt Curd' : 'Soy Milk Protein Melt Curd',
         code: 'VFA-MOZ-188',
-        tagline: 'High Protein Pizzeria Spec • Coagulated plant protein curd engineered for high-temperature deck ovens',
+        tagline: hasSoyAllergen
+          ? 'High Protein Pizzeria Spec • Coagulated pea protein curd engineered for high-temperature deck ovens'
+          : 'High Protein Pizzeria Spec • Coagulated plant protein curd engineered for high-temperature deck ovens',
         baseIsolate: hasSoyAllergen ? 'Pea Protein + Tapioca' : 'Soy Milk + Tapioca',
         tasteMatch: Math.min(92, Math.max(74, Math.round(request.tastePriority * 0.90))),
         textureParity: Math.min(94, Math.max(78, Math.round(request.texturePriority * 0.92))),

@@ -1,574 +1,439 @@
 import React from 'react';
 import { TabType } from '../types/formulation';
-import { CELLULAR_HERO_IMAGE } from '../data/mockData';
+import { CELLULAR_HERO_IMAGE, ACTOMYOSIN_SCAN_IMAGE } from '../data/mockData';
+import {
+  Atom,
+  ArrowRight,
+  Play,
+  TrendingDown,
+  Zap,
+  Leaf,
+  ShieldCheck,
+  Layers,
+  FlaskConical,
+  Activity,
+  Microscope,
+  Cpu,
+  Sliders,
+  Sparkles,
+  CheckCircle2,
+  AlertTriangle
+} from 'lucide-react';
 
 interface ProductViewProps {
   onNavigate: (tab: TabType) => void;
   onSelectCandidate: (candidateId: string) => void;
+  onActivateDemo?: (productName?: string) => void;
 }
 
-export const ProductView: React.FC<ProductViewProps> = ({ onNavigate, onSelectCandidate }) => {
-  return (
-    <div className="flex flex-col w-full px-margin pb-28 pt-20 max-w-4xl mx-auto gap-6 text-[#dfe4e0]">
-      {/* Ambient Light Scrim & Hero Banner */}
-      <div className="relative w-full rounded-2xl bg-[#131d18] border border-[#1f382b]/80 p-5 sm:p-7 shadow-2xl overflow-hidden">
-        {/* Glow ambient spots */}
-        <div className="absolute -top-16 -right-16 w-56 h-56 bg-[#00f5a0]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-14 -left-14 w-52 h-52 bg-[#00a572]/15 rounded-full blur-2xl pointer-events-none" />
+export const ProductView: React.FC<ProductViewProps> = ({
+  onNavigate,
+  onSelectCandidate,
+  onActivateDemo
+}) => {
+  const handleLaunchDemo = (product = 'Chicken Nugget') => {
+    if (onActivateDemo) {
+      onActivateDemo(product);
+    } else {
+      onNavigate('demo');
+    }
+  };
 
-        <div className="relative z-10 flex flex-col gap-4">
-          {/* Live Status Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18241e] border border-[#00f5a0]/30 w-fit shadow-[0_0_12px_rgba(0,245,160,0.15)]">
-            <span className="w-2 h-2 rounded-full bg-[#00f5a0] animate-pulse shadow-[0_0_8px_#00f5a0]" />
-            <span className="font-mono text-[10px] text-[#00f5a0] font-semibold tracking-widest uppercase">
-              AI-POWERED FOOD PRODUCT DEVELOPMENT
+  return (
+    <div className="flex flex-col w-full px-4 sm:px-6 pb-32 pt-20 max-w-5xl mx-auto gap-8 text-[#dfe4e0]">
+      {/* Hero Section */}
+      <section className="relative w-full rounded-3xl bg-[#0c1410] border border-[#1b2b22] p-6 sm:p-10 shadow-2xl overflow-hidden">
+        {/* Subtle scientific grid backdrop */}
+        <div
+          className="absolute inset-0 opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, #10b981 1px, transparent 0)`,
+            backgroundSize: '32px 32px'
+          }}
+        />
+
+        {/* Ambient subtle glow spots */}
+        <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#10b981]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#059669]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col gap-6">
+          {/* Scientific Status Badge */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#121d17] border border-[#10b981]/30 w-fit shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shadow-[0_0_8px_#10b981]" />
+            <span className="font-mono text-[11px] text-[#10b981] font-semibold tracking-widest uppercase">
+              COMPUTATIONAL FOOD R&amp;D PLATFORM
             </span>
           </div>
 
-          {/* Core Headline */}
-          <div className="flex flex-col gap-2">
-            <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-              Redesign animal-based foods.{' '}
-              <span className="text-[#00f5a0] drop-shadow-[0_0_14px_rgba(0,245,160,0.4)]">
-                Virtually. Intelligently.
+          {/* Main Title & Lead */}
+          <div className="flex flex-col gap-3 max-w-3xl">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.15]">
+              VEGANFORM AI <br />
+              <span className="text-[#10b981] font-mono text-2xl sm:text-4xl block mt-1">
+                Computational Food R&amp;D
               </span>
             </h1>
-            <p className="text-sm sm:text-base text-[#8da396] leading-relaxed max-w-2xl">
-              Generate and compare optimized vegan formulations across taste, texture, nutrition, cost, and sustainability — before moving to physical wet-lab assays.
+            <p className="text-sm sm:text-lg text-[#8da396] leading-relaxed mt-2 font-normal">
+              Convert conventional animal food concepts into optimized plant-based formulations through in-silico biopolymer permutation, functional mapping, and rheological parity modeling — before entering the wet lab.
             </p>
           </div>
 
-          {/* Visual Formulation Render Showcase */}
-          <div className="relative w-full h-48 sm:h-60 rounded-xl overflow-hidden border border-[#1f382b] shadow-xl group">
+          {/* Microscopy Scan Preview Card */}
+          <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden border border-[#1b2b22] bg-[#080d0b] shadow-xl group">
             <img
               src={CELLULAR_HERO_IMAGE}
               alt="High-resolution fluorescent cellular microscopy scan of plant-based protein matrix"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d] via-[#0a0f0d]/30 to-transparent" />
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[11px]">
-              <div className="flex items-center gap-2 text-white bg-[#0a0f0d]/80 px-2.5 py-1 rounded-md border border-[#1f382b]">
-                <span className="material-symbols-outlined text-[16px] text-[#00f5a0]">biotech</span>
-                <span>SIMULATION RUN #4982-B</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#090e0c] via-[#090e0c]/40 to-transparent" />
+
+            <div className="absolute top-3 right-3 flex items-center gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-[#090e0c]/80 text-[#10b981] border border-[#10b981]/40 font-mono text-[10px] font-semibold tracking-wider">
+                IN-SILICO SIMULATION #4982-B
+              </span>
+            </div>
+
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-xs text-white">
+              <div className="flex items-center gap-2 bg-[#090e0c]/85 px-3 py-1.5 rounded-lg border border-[#1b2b22]">
+                <Microscope className="w-4 h-4 text-[#10b981]" />
+                <span className="text-[11px]">SEM Tomography: Cross-Linked Legumin Globulin Matrix (λ = 0.74)</span>
               </div>
-              <span className="px-2.5 py-1 rounded-md bg-[#131d18] text-[#00f5a0] border border-[#00f5a0]/40 font-semibold shadow-[0_0_8px_rgba(0,245,160,0.2)]">
-                AI PROTOTYPE
+              <span className="text-[10px] text-[#8da396] hidden sm:inline">
+                200μm SCAN RESOLUTION
               </span>
             </div>
           </div>
 
-          {/* Main Action CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          {/* Primary Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3.5 pt-2">
             <button
               onClick={() => onNavigate('formulate')}
-              className="flex-1 py-3.5 px-5 rounded-lg bg-[#00f5a0] text-[#002111] font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,245,160,0.35)] hover:brightness-110 active:scale-[0.99] transition-all cursor-pointer"
+              className="flex-1 py-3.5 px-6 rounded-xl bg-[#10b981] hover:bg-[#059669] text-[#052e16] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-[0_0_24px_rgba(16,185,129,0.35)] hover:shadow-[0_0_32px_rgba(16,185,129,0.5)] transition-all cursor-pointer"
             >
-              <span>Start Formulation</span>
-              <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+              <FlaskConical className="w-4 h-4" />
+              <span>Launch Formulation Workspace</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
+
             <button
-              onClick={() => onNavigate('demo')}
-              className="py-3 px-5 rounded-lg bg-[#18241e] border border-[#1f382b] text-white font-mono text-xs font-medium flex items-center justify-center gap-2 hover:bg-[#1f382b] hover:border-[#00f5a0]/40 transition-colors cursor-pointer"
+              onClick={() => handleLaunchDemo('Chicken Nugget')}
+              className="py-3.5 px-6 rounded-xl bg-[#121d17] hover:bg-[#182820] border border-[#1b2b22] hover:border-[#10b981]/50 text-white font-mono text-xs font-semibold flex items-center justify-center gap-2.5 transition-all cursor-pointer shadow-sm"
             >
-              <span className="material-symbols-outlined text-[18px] text-[#00f5a0]">play_arrow</span>
-              <span>Try Live Interactive Demo</span>
+              <Play className="w-4 h-4 text-[#10b981] fill-[#10b981]" />
+              <span>Launch Interactive Demo (Offline Ready)</span>
             </button>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Impact Telemetry Bar */}
-      <div className="grid grid-cols-3 gap-2.5 sm:gap-4 w-full">
-        <div className="flex flex-col p-3 sm:p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm">
-          <div className="flex items-center justify-between mb-1">
-            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">CYCLE</span>
-            <span className="material-symbols-outlined text-[16px] text-[#00f5a0]">trending_down</span>
+      {/* Key Telemetry Impact Bar */}
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full">
+        <div className="flex flex-col p-4 rounded-2xl bg-[#0e1612] border border-[#1b2b22] shadow-sm">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">VELOCITY</span>
+            <Zap className="w-4 h-4 text-[#10b981]" />
           </div>
-          <span className="text-xl sm:text-2xl font-bold text-[#00f5a0] font-mono leading-none">-65%</span>
-          <span className="text-xs text-[#8da396] truncate mt-1">Cycle Time</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white font-mono leading-none">4.2x</span>
+          <span className="text-xs text-[#8da396] mt-1.5">Faster R&amp;D Pipeline</span>
         </div>
 
-        <div className="flex flex-col p-3 sm:p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm">
-          <div className="flex items-center justify-between mb-1">
-            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">SPEED</span>
-            <span className="material-symbols-outlined text-[16px] text-[#00f5a0]">bolt</span>
+        <div className="flex flex-col p-4 rounded-2xl bg-[#0e1612] border border-[#1b2b22] shadow-sm">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">BENCH CYCLES</span>
+            <TrendingDown className="w-4 h-4 text-[#10b981]" />
           </div>
-          <span className="text-xl sm:text-2xl font-bold text-white font-mono leading-none">4.2x</span>
-          <span className="text-xs text-[#8da396] truncate mt-1">Faster R&amp;D</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#10b981] font-mono leading-none">-65%</span>
+          <span className="text-xs text-[#8da396] mt-1.5">Formulation Iterations</span>
         </div>
 
-        <div className="flex flex-col p-3 sm:p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm">
-          <div className="flex items-center justify-between mb-1">
-            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">BENCH</span>
-            <span className="material-symbols-outlined text-[16px] text-[#00f5a0]">eco</span>
+        <div className="flex flex-col p-4 rounded-2xl bg-[#0e1612] border border-[#1b2b22] shadow-sm">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">PILOT EFFICIENCY</span>
+            <Leaf className="w-4 h-4 text-[#10b981]" />
           </div>
-          <span className="text-xl sm:text-2xl font-bold text-[#4edea3] font-mono leading-none">0.0kg</span>
-          <span className="text-xs text-[#8da396] truncate mt-1">Phase 1 Waste</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white font-mono leading-none">0.0 kg</span>
+          <span className="text-xs text-[#8da396] mt-1.5">Phase-1 Bench Waste</span>
         </div>
-      </div>
+
+        <div className="flex flex-col p-4 rounded-2xl bg-[#0e1612] border border-[#1b2b22] shadow-sm">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="font-mono text-[10px] text-[#8da396] uppercase font-semibold">BIO-CALCULATIONS</span>
+            <Atom className="w-4 h-4 text-[#10b981]" />
+          </div>
+          <span className="text-2xl sm:text-3xl font-bold text-[#10b981] font-mono leading-none">100%</span>
+          <span className="text-xs text-[#8da396] mt-1.5">Deterministic Engines</span>
+        </div>
+      </section>
 
       {/* Real-time Rheology & Texture Radar Telemetry */}
-      <div className="flex flex-col rounded-2xl bg-[#131d18] border border-[#1f382b] p-5 shadow-lg gap-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-4 bg-[#00f5a0] rounded-sm shadow-[0_0_8px_#00f5a0]" />
-            <h2 className="text-base sm:text-lg font-semibold text-white">Organoleptic Equilibrium</h2>
+      <section className="flex flex-col rounded-3xl bg-[#0c1410] border border-[#1b2b22] p-6 shadow-xl gap-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-4 bg-[#10b981] rounded-sm shadow-[0_0_8px_#10b981]" />
+              <h2 className="text-lg sm:text-xl font-bold text-white">Organoleptic Equilibrium Model</h2>
+            </div>
+            <p className="text-xs text-[#8da396] mt-0.5">
+              Multi-dimensional Pareto frontier comparing botanical candidate against animal reference control
+            </p>
           </div>
-          <span className="font-mono text-[10px] text-[#8da396] uppercase tracking-wider">
-            PARETO FRONT v3.2
+          <span className="font-mono text-[10px] text-[#10b981] bg-[#121d17] px-2.5 py-1 rounded-md border border-[#10b981]/25 self-start sm:self-auto font-semibold">
+            PARETO FRONTIER v3.2
           </span>
         </div>
 
-        {/* Inline Interactive SVG Spider Chart */}
-        <div className="relative w-full py-4 flex items-center justify-center bg-[#0a0f0d] rounded-xl border border-[#1f382b]/60 overflow-hidden">
-          <svg className="w-full h-56 max-w-sm" viewBox="0 0 240 190">
+        {/* Interactive SVG Spider Chart */}
+        <div className="relative w-full py-4 flex items-center justify-center bg-[#080d0b] rounded-2xl border border-[#1b2b22] overflow-hidden">
+          <svg className="w-full h-64 max-w-md" viewBox="0 0 240 190">
             {/* Concentric Pentagons */}
-            <polygon points="120,20 190,60 170,145 70,145 50,60" fill="none" stroke="#26382f" strokeWidth="1.2" />
-            <polygon points="120,45 165,72 152,128 88,128 75,72" fill="none" stroke="#26382f" strokeDasharray="2,2" strokeWidth="1" />
-            <polygon points="120,70 145,85 137,112 103,112 95,85" fill="none" stroke="#26382f" strokeWidth="0.8" />
+            <polygon points="120,20 190,60 170,145 70,145 50,60" fill="none" stroke="#1f3328" strokeWidth="1.2" />
+            <polygon points="120,45 165,72 152,128 88,128 75,72" fill="none" stroke="#1f3328" strokeDasharray="2,2" strokeWidth="1" />
+            <polygon points="120,70 145,85 137,112 103,112 95,85" fill="none" stroke="#1f3328" strokeWidth="0.8" />
 
             {/* Axis Lines */}
-            <line x1="120" y1="90" x2="120" y2="20" stroke="#1f382b" strokeWidth="1" />
-            <line x1="120" y1="90" x2="190" y2="60" stroke="#1f382b" strokeWidth="1" />
-            <line x1="120" y1="90" x2="170" y2="145" stroke="#1f382b" strokeWidth="1" />
-            <line x1="120" y1="90" x2="70" y2="145" stroke="#1f382b" strokeWidth="1" />
-            <line x1="120" y1="90" x2="50" y2="60" stroke="#1f382b" strokeWidth="1" />
+            <line x1="120" y1="90" x2="120" y2="20" stroke="#1b2b22" strokeWidth="1" />
+            <line x1="120" y1="90" x2="190" y2="60" stroke="#1b2b22" strokeWidth="1" />
+            <line x1="120" y1="90" x2="170" y2="145" stroke="#1b2b22" strokeWidth="1" />
+            <line x1="120" y1="90" x2="70" y2="145" stroke="#1b2b22" strokeWidth="1" />
+            <line x1="120" y1="90" x2="50" y2="60" stroke="#1b2b22" strokeWidth="1" />
 
-            {/* Baseline Animal Matrix (Pink dashed polygon) */}
+            {/* Baseline Animal Reference (Subtle Rose Dashed) */}
             <polygon
               points="120,28 178,66 158,136 82,134 58,68"
-              fill="#ffb4ab"
+              fill="#fb7185"
               fillOpacity="0.08"
-              stroke="#ffb4ab"
+              stroke="#fb7185"
               strokeDasharray="3,3"
               strokeWidth="1.5"
             />
 
-            {/* In-Silico Synthesis Polygon (Neon Green) */}
+            {/* In-Silico Synthesis Polygon (Refined Emerald) */}
             <polygon
               points="120,24 182,64 162,140 78,141 54,64"
-              fill="#00f5a0"
+              fill="#10b981"
               fillOpacity="0.22"
-              stroke="#00f5a0"
+              stroke="#10b981"
               strokeWidth="2"
-              style={{ filter: 'drop-shadow(0 0 6px rgba(0, 245, 160, 0.6))' }}
+              style={{ filter: 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.5))' }}
             />
 
             {/* Vertices */}
-            <circle cx="120" cy="24" r="3.5" fill="#00f5a0" />
-            <circle cx="182" cy="64" r="3.5" fill="#00f5a0" />
-            <circle cx="162" cy="140" r="3.5" fill="#00f5a0" />
-            <circle cx="78" cy="141" r="3.5" fill="#00f5a0" />
-            <circle cx="54" cy="64" r="3.5" fill="#00f5a0" />
+            <circle cx="120" cy="24" r="3" fill="#10b981" />
+            <circle cx="182" cy="64" r="3" fill="#10b981" />
+            <circle cx="162" cy="140" r="3" fill="#10b981" />
+            <circle cx="78" cy="141" r="3" fill="#10b981" />
+            <circle cx="54" cy="64" r="3" fill="#10b981" />
 
             {/* Axis Labels */}
-            <text x="120" y="14" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="middle">
-              MASTICATION
+            <text x="120" y="12" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="middle">
+              MASTICATION / CHEW
             </text>
-            <text x="200" y="62" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="start">
-              MOISTURE
+            <text x="202" y="62" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="start">
+              MOISTURE RETENTION
             </text>
             <text x="175" y="158" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="start">
-              SHEAR BOND
+              FIBRILLAR SHEAR
             </text>
             <text x="65" y="158" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="end">
-              EMULSION
+              LIPID EMULSION
             </text>
-            <text x="40" y="62" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="end">
-              AROMA
+            <text x="38" y="62" fill="#dfe4e0" fontFamily="JetBrains Mono" fontSize="8" fontWeight="600" textAnchor="end">
+              UMAMI VOLATILES
             </text>
           </svg>
 
           {/* Overlay Legend */}
-          <div className="absolute bottom-2 left-2 flex flex-col gap-1 bg-[#131d18]/90 backdrop-blur-md p-2 rounded-lg border border-[#1f382b] font-mono text-[10px]">
+          <div className="absolute bottom-3 left-3 flex flex-col gap-1.5 bg-[#0e1612]/95 backdrop-blur-md p-2.5 rounded-xl border border-[#1b2b22] font-mono text-[10px]">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-0.5 bg-[#ffb4ab] border-dashed" />
-              <span className="text-[#8da396]">Target Animal Matrix</span>
+              <span className="w-3 h-0.5 bg-[#fb7185] border-dashed" />
+              <span className="text-[#8da396]">Animal Target Control</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-1 bg-[#00f5a0] shadow-[0_0_6px_#00f5a0]" />
-              <span className="text-[#00f5a0] font-semibold">Candidate Alpha-7</span>
+              <span className="w-3 h-1 bg-[#10b981] shadow-[0_0_6px_#10b981]" />
+              <span className="text-[#10b981] font-semibold">Candidate Alpha-1 (In-Silico)</span>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Central Scientific Simulation Pipeline: Computational Wet-Lab Flow */}
-      <div className="flex flex-col gap-4">
+      {/* 5-Stage Computational Wet-Lab Flow */}
+      <section className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#18241e] text-[#00f5a0] border border-[#00f5a0]/30">
-              PIPELINE ARCHITECTURE
+            <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#121d17] text-[#10b981] border border-[#10b981]/25 font-semibold">
+              PIPELINE METHODOLOGY
             </span>
-            <span className="font-mono text-[10px] text-[#8da396]">ENGINE v3.2</span>
+            <span className="font-mono text-[10px] text-[#8da396]">STAGE ARCHITECTURE</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-            Computational Wet-Lab Flow
+            5-Stage Computational Wet-Lab Flow
           </h2>
           <p className="text-xs sm:text-sm text-[#8da396]">
-            Bidirectional multi-omics mapping transforming avian and bovine cellular targets into plant-native equivalents.
+            Structured pipeline transforming animal molecular and rheological properties into plant-native equivalents.
           </p>
         </div>
 
-        {/* Stepper Nodes */}
-        <div className="flex flex-col gap-2 relative">
-          {/* Step 01 */}
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-md relative overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-[#18241e] border border-[#00f5a0]/30 flex items-center justify-center shrink-0 text-[#00f5a0] font-mono text-xs font-bold shadow-[0_0_8px_rgba(0,245,160,0.15)]">
-              01
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-wider font-semibold">
-                  INPUT TARGET
-                </span>
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#8da396] font-mono text-[10px]">
-                  BASELINE
-                </span>
-              </div>
-              <h3 className="font-semibold text-white text-sm sm:text-base">
-                Avian Myofibrillar Matrix
-              </h3>
-              <p className="text-xs text-[#8da396] leading-relaxed">
-                Full spectrographic breakdown of muscle fiber bundles, pH isoelectric profile, and thermal denaturation points (68°C to 74°C).
-              </p>
-              <div className="flex flex-wrap gap-1.5 mt-1 font-mono text-[10px]">
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#8da396] border border-[#1f382b]">Actin: 18.2%</span>
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#8da396] border border-[#1f382b]">Myosin Heavy: 43.1%</span>
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#00f5a0] border border-[#00f5a0]/30">WHC: 84%</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Pipette Connector */}
-          <div className="flex items-center justify-center h-3">
-            <div className="w-0.5 h-full bg-[#00f5a0]/50 shadow-[0_0_4px_#00f5a0]" />
-          </div>
-
-          {/* Step 02 */}
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-md relative overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-[#18241e] border border-[#00f5a0]/30 flex items-center justify-center shrink-0 text-[#00f5a0] font-mono text-xs font-bold shadow-[0_0_8px_rgba(0,245,160,0.15)]">
-              02
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-wider font-semibold">
-                  DECONSTRUCTION
-                </span>
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#8da396] font-mono text-[10px]">
-                  KINETICS
-                </span>
-              </div>
-              <h3 className="font-semibold text-white text-sm sm:text-base">
-                Ingredient Function Mapping
-              </h3>
-              <p className="text-xs text-[#8da396] leading-relaxed">
-                Isolating mechanical properties: gelation threshold limits, ionic strength dependencies, and shear-induced alignment vectors.
-              </p>
-              <div className="flex flex-wrap gap-1.5 mt-1 font-mono text-[10px]">
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#4edea3] border border-[#1f382b]">Shear Stress: 4.8 kPa</span>
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#4edea3] border border-[#1f382b]">Emulsion Capacity: High</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Pipette Connector */}
-          <div className="flex items-center justify-center h-3">
-            <div className="w-0.5 h-full bg-[#00f5a0]/50 shadow-[0_0_4px_#00f5a0]" />
-          </div>
-
-          {/* Step 03 */}
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-md relative overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-[#18241e] border border-[#00f5a0]/30 flex items-center justify-center shrink-0 text-[#00f5a0] font-mono text-xs font-bold shadow-[0_0_8px_rgba(0,245,160,0.15)]">
-              03
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-wider font-semibold">
-                  BOTANICAL SEARCH
-                </span>
-                <span className="px-2 py-0.5 rounded bg-[#0b3d2e] text-[#00f5a0] border border-[#00f5a0]/40 font-mono text-[10px] font-semibold">
-                  1,420 MOLECULES
-                </span>
-              </div>
-              <h3 className="font-semibold text-white text-sm sm:text-base">
-                Vegan Substitution Engine
-              </h3>
-              <p className="text-xs text-[#8da396] leading-relaxed">
-                Screening legume globulins, precision-fermented lipid droplets, and cross-linking dietary hydrocolloids to match elasticity.
-              </p>
-              <div className="flex flex-col gap-1.5 mt-2 bg-[#0a0f0d] p-2.5 rounded-lg border border-[#1f382b]/60">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-[#dfe4e0]">Pisum sativum isolate</span>
-                  <span className="font-mono text-[#00f5a0] font-semibold">Primary Base</span>
-                </div>
-                <div className="w-full bg-[#18241e] h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-[#00f5a0] h-full rounded-full shadow-[0_0_6px_#00f5a0]" style={{ width: '90%' }} />
-                </div>
-                <div className="flex justify-between items-center text-xs pt-1">
-                  <span className="text-[#dfe4e0]">Oat beta-glucan scaffold</span>
-                  <span className="font-mono text-[#00f5a0] font-semibold">Hydrocolloid Matrix</span>
-                </div>
-                <div className="w-full bg-[#18241e] h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-[#00f5a0] h-full rounded-full shadow-[0_0_6px_#00f5a0]" style={{ width: '75%' }} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Pipette Connector */}
-          <div className="flex items-center justify-center h-3">
-            <div className="w-0.5 h-full bg-[#00f5a0]/50 shadow-[0_0_4px_#00f5a0]" />
-          </div>
-
-          {/* Step 04 */}
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-md relative overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-[#18241e] border border-[#00f5a0]/30 flex items-center justify-center shrink-0 text-[#00f5a0] font-mono text-xs font-bold shadow-[0_0_8px_rgba(0,245,160,0.15)]">
-              04
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-wider font-semibold">
-                  PARETO OPTIMIZER
-                </span>
-                <span className="px-2 py-0.5 rounded bg-[#18241e] text-[#8da396] font-mono text-[10px]">
-                  MULTI-DIMENSIONAL
-                </span>
-              </div>
-              <h3 className="font-semibold text-white text-sm sm:text-base">
-                Dynamic Cost-Sensory Balancing
-              </h3>
-              <p className="text-xs text-[#8da396] leading-relaxed">
-                Resolving trade-offs between clean-label non-GMO status, production line throughput, and target gross margin unit cost ($/kg).
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-1.5">
-                <div className="p-2 rounded bg-[#0a0f0d] border border-[#1f382b]/60">
-                  <span className="font-mono text-[10px] text-[#8da396] block">Target Cost</span>
-                  <p className="font-mono text-sm text-[#00f5a0] font-semibold mt-0.5">$3.12 / kg</p>
-                </div>
-                <div className="p-2 rounded bg-[#0a0f0d] border border-[#1f382b]/60">
-                  <span className="font-mono text-[10px] text-[#8da396] block">Clean Index</span>
-                  <p className="font-mono text-sm text-[#00f5a0] font-semibold mt-0.5">9.4 / 10</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Pipette Connector */}
-          <div className="flex items-center justify-center h-3">
-            <div className="w-0.5 h-full bg-[#00f5a0]/50 shadow-[0_0_4px_#00f5a0]" />
-          </div>
-
-          {/* Step 05 */}
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-[#14211a] border border-[#00f5a0]/40 shadow-[0_0_24px_rgba(0,245,160,0.15)] relative overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-[#00f5a0] text-[#002111] flex items-center justify-center shrink-0 font-mono text-xs font-bold shadow-[0_0_12px_#00f5a0]">
-              05
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-wider font-semibold">
-                  SYNTHESIS READY
-                </span>
-                <span className="px-2 py-0.5 rounded bg-[#0b3d2e] text-[#00f5a0] border border-[#00f5a0]/30 font-mono text-[10px] font-semibold">
-                  3 CANDIDATES
-                </span>
-              </div>
-              <h3 className="font-semibold text-white text-sm sm:text-base">
-                Top-Ranked Lab Formulations
-              </h3>
-              <p className="text-xs text-[#8da396] leading-relaxed">
-                Candidate Alpha-7 achieves high sensory mimicry with verified extrusion thermals.
-              </p>
-              {/* Candidate Pill Strip */}
-              <div className="flex flex-col gap-1.5 mt-2">
-                <div
-                  onClick={() => onSelectCandidate('vfa-chk-092')}
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-[#0a0f0d] border border-[#1f382b] hover:border-[#00f5a0]/50 cursor-pointer transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[#00f5a0] text-[18px]">verified</span>
-                    <span className="font-mono text-xs text-white font-medium">Alpha-7 (Golden Shortlist - Pea)</span>
-                  </div>
-                  <span className="font-mono text-xs text-[#00f5a0] font-bold">Rank #1</span>
-                </div>
-                <div
-                  onClick={() => onSelectCandidate('vfa-chk-041')}
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-[#0a0f0d] border border-[#1f382b] hover:border-[#00f5a0]/50 cursor-pointer transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[#8da396] text-[18px]">check_circle</span>
-                    <span className="font-mono text-xs text-[#dfe4e0]">Beta-12 (Budget Focused - Chickpea)</span>
-                  </div>
-                  <span className="font-mono text-xs text-[#8da396]">Rank #2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Core Biocentric Capabilities (Bento Grid) */}
-      <div className="flex flex-col gap-3">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-white">Core Biocentric Capabilities</h2>
-          <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-wider">v2.4 MODULES</span>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {/* Card 1 */}
-          <div className="flex flex-col p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm gap-2">
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-lg bg-[#18241e] border border-[#1f382b] flex items-center justify-center text-[#00f5a0]">
-                <span className="material-symbols-outlined text-[22px]">account_tree</span>
-              </div>
-              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#18241e] text-[#00f5a0] border border-[#1f382b]">
-                ONTOLOGY GRAPH
-              </span>
-            </div>
-            <h3 className="font-semibold text-white text-sm">Ingredient Intelligence</h3>
-            <p className="text-xs text-[#8da396] leading-relaxed">
-              Predictive cross-reactivity mapping for over 3,800 botanical proteins, microalgae isolates, and fungal mycelium structures.
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="flex flex-col p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm gap-2">
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-lg bg-[#18241e] border border-[#1f382b] flex items-center justify-center text-[#00f5a0]">
-                <span className="material-symbols-outlined text-[22px]">tune</span>
-              </div>
-              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#18241e] text-[#00f5a0] border border-[#1f382b]">
-                PARETO ENGINE
-              </span>
-            </div>
-            <h3 className="font-semibold text-white text-sm">Multi-Objective Optimization</h3>
-            <p className="text-xs text-[#8da396] leading-relaxed">
-              Dynamically tune parameters across bite firmness, juiciness, lipid bleed rate, sodium limits, and global raw material costs.
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="flex flex-col p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm gap-2">
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-lg bg-[#18241e] border border-[#1f382b] flex items-center justify-center text-[#00f5a0]">
-                <span className="material-symbols-outlined text-[22px]">view_in_ar</span>
-              </div>
-              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#18241e] text-[#00f5a0] border border-[#1f382b]">
-                IN SILICO MATRIX
-              </span>
-            </div>
-            <h3 className="font-semibold text-white text-sm">Virtual Iteration Engine</h3>
-            <p className="text-xs text-[#8da396] leading-relaxed">
-              Synthesize 10,000+ hypothetical blend variations per batch run. Eliminate 90% of bench-scale trial errors before ingredients ship.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="flex flex-col p-4 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm gap-2">
-            <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-lg bg-[#18241e] border border-[#1f382b] flex items-center justify-center text-[#00f5a0]">
-                <span className="material-symbols-outlined text-[22px]">speed</span>
-              </div>
-              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#18241e] text-[#00f5a0] border border-[#1f382b]">
-                VELOCITY ACCELERATOR
-              </span>
-            </div>
-            <h3 className="font-semibold text-white text-sm">R&amp;D Sprint Acceleration</h3>
-            <p className="text-xs text-[#8da396] leading-relaxed">
-              Transform typical 14-month alt-protein formulation roadmaps into agile 3-week computational candidate generation cycles.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* 5-Stage Computational Matrix Checklist */}
-      <div className="flex flex-col p-4 sm:p-5 rounded-xl bg-[#131d18] border border-[#1f382b] shadow-sm gap-3">
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-[#00f5a0] text-[20px]">science</span>
-          <h2 className="font-semibold text-white text-sm sm:text-base">5-Stage Computational Matrix</h2>
-        </div>
-        <div className="flex flex-col gap-2.5 font-sans">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
           {[
             {
-              step: '1',
-              title: 'Spectrographic Protein Profiling',
-              desc: 'Deconstruct reference animal protein matrices into molecular descriptors.'
+              step: '01',
+              title: 'Target Deconstruction',
+              desc: 'Biochemical profiling of fibrillar actomyosin or casein micelle arrays.',
+              tag: 'BASELINE SPEC'
             },
             {
-              step: '2',
-              title: 'Functional Affinity Scoring',
-              desc: 'Quantify hydrocolloid binding and lipid phase dispersion indices.'
+              step: '02',
+              title: 'Functional Mapping',
+              desc: 'Gelation thresholds, water activity, and shear denaturation points.',
+              tag: 'RHEOLOGY'
             },
             {
-              step: '3',
-              title: 'Algorithmic Formulation Assembly',
-              desc: 'Simulate structural cross-links under industrial pilot extrusion pressures.'
+              step: '03',
+              title: 'Botanical Permutation',
+              desc: 'Screening 3,800+ plant isolates for complementary texturizing synergy.',
+              tag: '1,420 BIOPOLYMERS'
             },
             {
-              step: '4',
-              title: 'Sensory & Clean-Label Pareto Filter',
-              desc: 'Eliminate non-compliant binders and high-allergen components automatically.'
+              step: '04',
+              title: 'Pareto Optimization',
+              desc: 'Multi-objective balancing across taste, chew, protein, and unit cost.',
+              tag: 'PARETO FRONT'
             },
             {
-              step: '5',
-              title: 'Wet-Lab Assay Sheet Export',
-              desc: 'Direct step-by-step hydration protocols and shear torque calibration logs.'
+              step: '05',
+              title: 'Lab Assay Directive',
+              desc: 'Ready-to-run 100kg batch recipe with HMEC twin-screw thermal parameters.',
+              tag: 'PILOT DISPATCH'
             }
           ].map((item) => (
-            <div key={item.step} className="flex items-start gap-2.5">
-              <span className="w-5 h-5 rounded bg-[#00f5a0] text-[#002111] flex items-center justify-center font-mono text-[11px] font-bold mt-0.5 shrink-0">
-                {item.step}
-              </span>
-              <div className="flex flex-col">
-                <span className="font-medium text-white text-xs sm:text-sm">{item.title}</span>
-                <span className="text-xs text-[#8da396]">{item.desc}</span>
+            <div key={item.step} className="p-4 rounded-2xl bg-[#0c1410] border border-[#1b2b22] flex flex-col justify-between shadow-sm">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="w-7 h-7 rounded-lg bg-[#121d17] border border-[#10b981]/30 text-[#10b981] flex items-center justify-center font-mono text-xs font-bold">
+                    {item.step}
+                  </span>
+                  <span className="font-mono text-[9px] text-[#8da396] bg-[#080d0b] px-1.5 py-0.5 rounded border border-[#1b2b22]">
+                    {item.tag}
+                  </span>
+                </div>
+                <h3 className="font-semibold text-white text-sm mt-1">{item.title}</h3>
+                <p className="text-xs text-[#8da396] mt-1 leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
+
+      {/* Core Biocentric Capabilities (Bento Grid) */}
+      <section className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg sm:text-xl font-bold text-white">Platform Capabilities</h2>
+          <span className="font-mono text-[10px] text-[#10b981] bg-[#121d17] px-2 py-0.5 rounded border border-[#10b981]/25">
+            ENTERPRISE SUITE
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-5 rounded-2xl bg-[#0c1410] border border-[#1b2b22] flex flex-col gap-2.5 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="w-10 h-10 rounded-xl bg-[#121d17] border border-[#10b981]/30 flex items-center justify-center text-[#10b981]">
+                <Layers className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#080d0b] text-[#10b981] border border-[#1b2b22]">
+                ONTOLOGY GRAPH
+              </span>
+            </div>
+            <h3 className="font-bold text-white text-base">Botanical Ingredient Intelligence</h3>
+            <p className="text-xs text-[#8da396] leading-relaxed">
+              Predictive cross-reactivity mapping for over 3,800 botanical proteins, starch scaffolds, and lipid dispersions with verified water holding capacity and thermal gelation properties.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0c1410] border border-[#1b2b22] flex flex-col gap-2.5 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="w-10 h-10 rounded-xl bg-[#121d17] border border-[#10b981]/30 flex items-center justify-center text-[#10b981]">
+                <Sliders className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#080d0b] text-[#10b981] border border-[#1b2b22]">
+                PARETO OPTIMIZER
+              </span>
+            </div>
+            <h3 className="font-bold text-white text-base">Multi-Objective Pareto Engine</h3>
+            <p className="text-xs text-[#8da396] leading-relaxed">
+              Dynamically balance competing priorities across taste similarity, tensile cutting resistance, protein density, commercial cost ceilings, and prototype carbon reduction.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0c1410] border border-[#1b2b22] flex flex-col gap-2.5 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="w-10 h-10 rounded-xl bg-[#121d17] border border-[#10b981]/30 flex items-center justify-center text-[#10b981]">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#080d0b] text-[#10b981] border border-[#1b2b22]">
+                STRICT EXCLUSION
+              </span>
+            </div>
+            <h3 className="font-bold text-white text-base">Authoritative Allergen Enforcement</h3>
+            <p className="text-xs text-[#8da396] leading-relaxed">
+              Zero tolerance for declared allergen cross-contamination. Formulations with active restrictions (Soy, Gluten, Tree Nuts, Dairy, Egg) are strictly filtered and repaired before ranking.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0c1410] border border-[#1b2b22] flex flex-col gap-2.5 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="w-10 h-10 rounded-xl bg-[#121d17] border border-[#10b981]/30 flex items-center justify-center text-[#10b981]">
+                <Cpu className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#080d0b] text-[#10b981] border border-[#1b2b22]">
+                EXTRUSION REGIMENS
+              </span>
+            </div>
+            <h3 className="font-bold text-white text-base">Extrusion Directives &amp; Pilot Scaling</h3>
+            <p className="text-xs text-[#8da396] leading-relaxed">
+              Generates ready-to-run 5-zone thermal profiles for High-Moisture Extrusion (HMEC), low moisture texturization, and wet spinning to match parallel fibrillar alignment.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Mandatory Laboratory Protocol Callout */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-[#14211a] border border-[#00f5a0]/30 shadow-md">
-        <span className="material-symbols-outlined text-[#00f5a0] text-[24px] shrink-0 mt-0.5">policy</span>
+      <section className="flex items-start gap-3.5 p-5 rounded-2xl bg-[#0e1713] border border-[#10b981]/30 shadow-md">
+        <ShieldCheck className="w-5 h-5 text-[#10b981] shrink-0 mt-0.5" />
         <div className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-[#00f5a0] font-bold uppercase tracking-wider">
+          <span className="font-mono text-xs text-[#10b981] font-bold uppercase tracking-wider">
             Mandatory Laboratory Validation Protocol
           </span>
           <p className="text-xs text-[#8da396] leading-relaxed">
-            All generated formulations constitute in-silico computational predictions. Prior to commercial scale-up or human taste panels, formulations must undergo pilot plant shear trials, microbiological shelf assays, and regulatory allergen assessments according to ISO-22000 standards.
+            All generated formulations constitute in-silico computational predictions. Prior to commercial scale-up or sensory taste panels, formulations must undergo benchtop pilot trials, microbiological shelf-life assays, and formal allergen confirmation according to standard food safety regulations.
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Bottom CTA Banner */}
-      <div className="flex flex-col p-5 rounded-xl bg-[#14211a] border border-[#00f5a0]/40 shadow-xl gap-4 relative overflow-hidden">
-        <div className="absolute -right-8 -bottom-8 w-36 h-36 bg-[#00f5a0]/15 rounded-full blur-2xl pointer-events-none" />
-        <div className="flex flex-col gap-1 z-10">
-          <span className="font-mono text-[10px] text-[#00f5a0] uppercase tracking-widest font-semibold">
-            DEPLOYMENT COHORT READY
-          </span>
-          <h2 className="text-lg sm:text-xl font-bold text-white">Deploy Candidate Formulations Now</h2>
+      <section className="flex flex-col sm:flex-row items-center justify-between gap-5 p-6 rounded-3xl bg-gradient-to-r from-[#0c1410] via-[#121f17] to-[#0c1410] border border-[#10b981]/40 shadow-2xl">
+        <div className="flex flex-col gap-1">
+          <h2 className="text-xl font-bold text-white">Ready to Formulate a Bio-Equivalent Target?</h2>
           <p className="text-xs text-[#8da396]">
-            Access the synthesis workspace to configure raw ingredient catalogs, export sensory mixing protocols, or launch custom neural simulations.
+            Configure custom parameters or load a benchmark food target to run in-silico biopolymer permutation.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-2.5 z-10">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
           <button
             onClick={() => onNavigate('formulate')}
-            className="flex-1 py-3 px-4 rounded-lg bg-[#00f5a0] text-[#002111] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_16px_rgba(0,245,160,0.35)] hover:brightness-110 active:scale-[0.99] transition-all cursor-pointer"
+            className="flex-1 sm:flex-initial py-3 px-5 rounded-xl bg-[#10b981] hover:bg-[#059669] text-[#052e16] font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[18px]">science</span>
-            <span>Open Formulation Studio</span>
+            <span>Open Workspace</span>
+            <ArrowRight className="w-4 h-4" />
           </button>
           <button
-            onClick={() => onNavigate('candidates')}
-            className="py-2.5 px-4 rounded-lg bg-[#18241e] border border-[#1f382b] text-[#dfe4e0] font-mono text-xs flex items-center justify-center gap-2 hover:bg-[#1f382b] transition-colors cursor-pointer"
+            onClick={() => handleLaunchDemo('Chicken Nugget')}
+            className="py-3 px-4 rounded-xl bg-[#080d0b] hover:bg-[#121d17] border border-[#1b2b22] text-[#dfe4e0] font-mono text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[18px] text-[#00f5a0]">folder_open</span>
-            <span>Explore Validated Repository (48)</span>
+            <Play className="w-3.5 h-3.5 text-[#10b981]" />
+            <span>Demo Mode</span>
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
