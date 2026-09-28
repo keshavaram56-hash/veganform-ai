@@ -187,29 +187,26 @@ export default function App() {
   const getTitleContext = () => {
     switch (currentTab) {
       case 'product':
-        return 'BIOCHEMICAL R&D SUITE';
+        return 'Overview';
       case 'formulate':
-        return 'FORMULATION WORKSPACE';
+        return 'Workspace';
       case 'candidates':
-        return 'CANDIDATE COMPARISON';
+        return 'Candidates';
       case 'detail':
-        return 'LAB SPECIFICATION SHEET';
+        return 'Specification';
       case 'knowledge':
-        return 'BOTANICAL ENCYCLOPEDIA';
+        return 'Library';
       case 'demo':
-        return 'INTERACTIVE DEMO';
+        return 'Demo Mode';
       default:
-        return 'IN-SILICO PLATFORM';
+        return 'R&D Platform';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#090e0c] text-[#dfe4e0] font-sans selection:bg-[#10b981]/30 selection:text-white flex flex-col relative overflow-x-hidden">
-      {/* Background ambient lighting */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[350px] bg-[#10b981]/5 blur-[140px] rounded-full" />
-        <div className="absolute bottom-1/3 right-10 w-[500px] h-[350px] bg-[#059669]/5 blur-[150px] rounded-full" />
-      </div>
+    <div className="min-h-screen bg-[#F8FAF9] text-[#17201C] font-sans selection:bg-emerald-100 selection:text-emerald-900 flex flex-col relative overflow-x-hidden">
+      {/* Subtle clean background grid */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(#E5EAE7_1px,transparent_1px)] [background-size:24px_24px] opacity-60" />
 
       {/* Persistent Global Header */}
       <Header
@@ -230,23 +227,23 @@ export default function App() {
 
       {/* Persistent Top Demo Mode Banner (when Demo Mode is active) */}
       {isDemoMode && (
-        <div className="sticky top-16 z-30 bg-[#0e1713]/95 backdrop-blur-md border-b border-amber-500/40 px-4 py-2 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 shadow-lg">
-          <div className="flex items-center gap-2 text-amber-300 font-mono">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping shrink-0" />
-            <span className="font-bold">DEMO MODE ACTIVE:</span>
-            <span className="text-[#dfe4e0] hidden sm:inline">Deterministic In-Silico R&amp;D Engine (No API key required)</span>
+        <div className="sticky top-16 z-30 bg-[#FFFBEB] border-b border-[#FDE68A] px-4 py-2 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 shadow-xs">
+          <div className="flex items-center gap-2 text-[#92400E]">
+            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
+            <span className="font-semibold">Demo Mode Active:</span>
+            <span className="text-[#78350F] hidden sm:inline">Deterministic In-Silico R&amp;D Simulation</span>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap justify-center">
-            <span className="font-mono text-[10px] text-[#8da396] uppercase hidden md:inline">Quick Demo Targets:</span>
+            <span className="text-[11px] text-[#92400E] font-medium hidden md:inline">Quick Demo Targets:</span>
             {['Chicken Nugget', 'Mozzarella Cheese', 'Milk', 'Ice Cream', 'Egg', 'Mayonnaise'].map((target) => (
               <button
                 key={target}
                 onClick={() => handleActivateDemo(target)}
-                className={`px-2 py-0.5 rounded-md font-mono text-[10px] transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
                   activeProductName.toLowerCase() === target.toLowerCase()
-                    ? 'bg-[#10b981] text-[#052e16] font-bold shadow-sm'
-                    : 'bg-[#121d17] text-[#8da396] hover:text-white border border-[#1b2b22]'
+                    ? 'bg-[#059669] text-white shadow-xs'
+                    : 'bg-white text-[#66716B] hover:text-[#17201C] border border-[#E5EAE7]'
                 }`}
               >
                 {target}
@@ -255,10 +252,10 @@ export default function App() {
 
             <button
               onClick={handleExitDemo}
-              className="ml-2 px-2.5 py-0.5 rounded-md bg-rose-950/70 border border-rose-500/50 text-rose-300 hover:bg-rose-900/80 font-mono text-[10px] font-bold flex items-center gap-1 transition-colors cursor-pointer"
+              className="ml-2 px-2.5 py-1 rounded-md bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer"
             >
-              <X className="w-3 h-3" />
-              <span>EXIT DEMO</span>
+              <X className="w-3.5 h-3.5" />
+              <span>Exit Demo</span>
             </button>
           </div>
         </div>
@@ -376,9 +373,9 @@ export default function App() {
 
       {/* Toast Notification Banner */}
       {toastMessage && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-[#0e1713] border border-[#10b981]/50 text-white font-mono text-xs shadow-2xl flex items-center gap-2.5 animate-bounce-subtle backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping shrink-0" />
-          <span>{toastMessage}</span>
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-white border border-[#E5EAE7] text-[#17201C] text-xs shadow-dropdown flex items-center gap-2.5 animate-bounce-subtle">
+          <span className="w-2 h-2 rounded-full bg-[#059669] shrink-0" />
+          <span className="font-medium">{toastMessage}</span>
         </div>
       )}
     </div>

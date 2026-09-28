@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, X, RefreshCw, Send, Activity } from 'lucide-react';
+import { Activity, X, RefreshCw, Send, CheckCircle2 } from 'lucide-react';
 
 interface TerminalModalProps {
   isOpen: boolean;
@@ -8,13 +8,13 @@ interface TerminalModalProps {
 
 export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose }) => {
   const [logs, setLogs] = useState<string[]>([
-    '[INIT] Bio-Computational Physics Engine v3.2 initialized on high-throughput matrix cores',
-    '[LOAD] Botanical ontology loaded: 3,842 verified molecular isolates across 14 kingdoms',
-    '[SPECTRO] Reference myofibrillar deconstruction complete: Actin (18.2%), Myosin Heavy (43.1%)',
+    '[INIT] Bio-Computational Physics Engine initialized on deterministic matrix cores',
+    '[LOAD] Botanical ontology loaded: 3,842 verified molecular isolates across 14 categories',
+    '[SPECTRO] Reference myofibrillar deconstruction complete: Actin (18.2%), Myosin (43.1%)',
     '[CONSTRAINTS] Boundary enforcement active: Zero allergen cross-contamination verified',
     '[PARETO] Exploring multi-objective frontier: Taste, Texture, Nutrition, Cost, Carbon LCA',
     '[SIM_RUN #8841-B] Converged in 38.4ms. Top 3 candidates synthesized with Pareto efficiency',
-    '[READY] In-silico twin-screw texturization model verified. Ready for wet-lab assay export.'
+    '[READY] In-silico twin-screw texturization model verified. Ready for pilot lab export.'
   ]);
 
   const [inputVal, setInputVal] = useState('');
@@ -55,19 +55,19 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
         'Available diagnostic commands:',
         '  status     - Show bio-engine and deterministic thread status',
         '  recompute  - Trigger in-silico Pareto frontier re-synthesis',
-        '  clear      - Clear terminal log stream',
-        '  ping       - Test Pilot Lab formulation server connection'
+        '  clear      - Clear diagnostic log stream',
+        '  ping       - Test pilot formulation server connection'
       ]);
       return;
     }
 
     if (cmd.toLowerCase() === 'recompute') {
       setIsSimulating(true);
-      setLogs((prev) => [...prev, '>>> Running 10,000 iterative Monte-Carlo shear-cell permutations...']);
+      setLogs((prev) => [...prev, '>>> Running iterative shear-cell permutations...']);
       setTimeout(() => {
         setLogs((prev) => [
           ...prev,
-          '>>> Iteration 10,000 complete: Pareto front re-converged. Candidate VFA-CHK-092 maintains #1.'
+          '>>> Permutation complete: Pareto frontier re-converged. Candidate VFA-CHK-092 maintains #1.'
         ]);
         setIsSimulating(false);
       }, 1200);
@@ -79,32 +79,35 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/35 backdrop-blur-xs animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-3xl bg-[#090e0c] border border-[#1b2b22] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_25px_rgba(16,185,129,0.15)] overflow-hidden flex flex-col h-[520px]"
+        className="w-full max-w-3xl bg-white border border-[#E5EAE7] rounded-2xl shadow-dropdown overflow-hidden flex flex-col h-[520px]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Terminal Title Bar */}
-        <div className="px-4 py-3 bg-[#0e1713] border-b border-[#1b2b22] flex items-center justify-between">
+        {/* Title Bar */}
+        <div className="px-5 py-3.5 bg-[#F8FAF9] border-b border-[#E5EAE7] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse shadow-[0_0_8px_#10b981]" />
-            <Terminal className="w-4 h-4 text-[#10b981]" />
-            <span className="font-mono text-xs font-bold text-white tracking-wide">
-              VeganForm CUDA-BIO Synthesis Terminal [PID 0x8F94]
+            <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
+            <Activity className="w-4 h-4 text-[#059669]" />
+            <span className="text-xs font-semibold text-[#17201C]">
+              R&amp;D Engine Telemetry &amp; Diagnostics
+            </span>
+            <span className="text-[11px] bg-[#ECFDF5] text-[#059669] px-2 py-0.5 rounded border border-[#BBF7D0] font-medium">
+              Live Link
             </span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setLogs([])}
-              className="font-mono text-[10px] text-[#8da396] hover:text-[#10b981] px-2 py-0.5 rounded bg-[#121c17] border border-[#1b2b22] transition-colors cursor-pointer"
+              className="text-xs text-[#66716B] hover:text-[#17201C] px-2.5 py-1 rounded-md bg-white border border-[#E5EAE7] transition-colors cursor-pointer"
             >
-              CLEAR
+              Clear
             </button>
             <button
               onClick={onClose}
-              className="text-[#8da396] hover:text-white p-1 rounded-lg hover:bg-[#18261f] transition-colors cursor-pointer"
+              className="text-[#66716B] hover:text-[#17201C] p-1 rounded-lg hover:bg-[#F3F6F4] transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -112,27 +115,27 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Logs Output */}
-        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs text-[#dfe4e0] space-y-1.5 bg-[#090e0c]">
+        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs text-[#334155] space-y-1.5 bg-[#F8FAF9]">
           {logs.map((log, i) => (
             <div
               key={i}
               className={`leading-relaxed ${
                 log.startsWith('$')
-                  ? 'text-[#10b981] font-semibold'
+                  ? 'text-[#059669] font-semibold'
                   : log.includes('[SPECTRO]')
-                  ? 'text-cyan-400'
+                  ? 'text-[#0284C7]'
                   : log.includes('[PARETO]')
-                  ? 'text-amber-300'
+                  ? 'text-[#D97706]'
                   : log.includes('[READY]')
-                  ? 'text-emerald-400 font-semibold'
-                  : 'text-[#8da396]'
+                  ? 'text-[#059669] font-medium'
+                  : 'text-[#64748B]'
               }`}
             >
               {log}
             </div>
           ))}
           {isSimulating && (
-            <div className="flex items-center gap-2 text-[#10b981] animate-pulse">
+            <div className="flex items-center gap-2 text-[#059669] animate-pulse font-medium">
               <RefreshCw className="w-4 h-4 animate-spin" />
               <span>Running parallel in-silico texturization tensors...</span>
             </div>
@@ -140,21 +143,21 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Command Line Input */}
-        <form onSubmit={handleCommand} className="p-3 bg-[#0e1713] border-t border-[#1b2b22] flex items-center gap-2">
-          <span className="font-mono text-xs text-[#10b981] font-bold">$</span>
+        <form onSubmit={handleCommand} className="p-3 bg-white border-t border-[#E5EAE7] flex items-center gap-2">
+          <span className="font-mono text-xs text-[#059669] font-bold pl-1">$</span>
           <input
             type="text"
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder="Type 'help', 'recompute', 'status', or custom bio-query..."
-            className="flex-1 bg-transparent font-mono text-xs text-white placeholder-[#8da396]/50 focus:outline-none"
+            className="flex-1 bg-transparent font-mono text-xs text-[#17201C] placeholder-[#66716B]/60 focus:outline-none"
           />
           <button
             type="submit"
-            className="px-3 py-1 bg-[#121c17] border border-[#10b981]/40 text-[#10b981] font-mono text-xs rounded-lg hover:bg-[#10b981] hover:text-black transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-3.5 py-1.5 bg-[#F0FDF4] border border-[#BBF7D0] text-[#059669] text-xs font-medium rounded-lg hover:bg-[#DCFCE7] transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Send className="w-3 h-3" />
-            <span>EXEC</span>
+            <span>Run</span>
           </button>
         </form>
       </div>

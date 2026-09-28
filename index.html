@@ -1,38 +1,37 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>VeganForm AI - Computational Food R&D</title>
+    <title>VeganForm AI — Computational Food R&D</title>
     <meta name="description" content="Design, calibrate, and synthesize bio-equivalent plant substrates with multi-variable constraints and in-silico food biochemistry." />
-    <meta property="og:title" content="VeganForm AI - Computational Food R&D" />
+    <meta property="og:title" content="VeganForm AI — Computational Food R&D" />
     <meta property="og:description" content="Design, calibrate, and synthesize bio-equivalent plant substrates with multi-variable constraints and in-silico food biochemistry." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       body {
-        background-color: #0a0f0d;
-        color: #dfe4e0;
+        background-color: #F8FAF9;
+        color: #17201C;
         overscroll-behavior: none;
       }
-      /* Custom scrollbars */
+      /* Custom clean scrollbars */
       ::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
+        width: 6px;
+        height: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #0a0f0d;
+        background: #F1F5F3;
       }
       ::-webkit-scrollbar-thumb {
-        background: #1f382b;
-        border-radius: 2px;
+        background: #D1DCD6;
+        border-radius: 3px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #00f5a0;
+        background: #A5B6AE;
       }
       .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -46,20 +45,19 @@
         height: 18px;
         width: 18px;
         border-radius: 50%;
-        background: #00f5a0;
+        background: #059669;
         cursor: pointer;
-        box-shadow: 0 0 10px #00f5a0;
-        border: 2px solid #0a0f0d;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        border: 2px solid #FFFFFF;
       }
       input[type="range"]::-webkit-slider-runnable-track {
-        background: #18241e;
+        background: #E5EAE7;
         height: 6px;
         border-radius: 9999px;
-        border: 1px solid #26382f;
       }
     </style>
   </head>
-  <body class="bg-[#0a0f0d] text-[#dfe4e0] font-sans antialiased min-h-screen">
+  <body class="bg-[#F8FAF9] text-[#17201C] font-sans antialiased min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

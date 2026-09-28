@@ -18,7 +18,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentTab, onNavigate, is
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-[#090e0c]/95 backdrop-blur-xl border-t border-[#1b2b22] px-2 py-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.6)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-[#E5EAE7] px-2 py-1 shadow-subtle">
       <div className="flex justify-around items-center h-14 max-w-md mx-auto">
         {items.map((item) => {
           const Icon = item.icon;
@@ -31,18 +31,18 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentTab, onNavigate, is
               onClick={() => onNavigate(item.id)}
               className={`flex flex-col items-center justify-center w-14 h-12 gap-1 transition-all relative cursor-pointer ${
                 isDemoItem && isDemoMode
-                  ? 'text-amber-400 font-semibold'
+                  ? 'text-amber-600 font-semibold'
                   : isActive
-                  ? 'text-[#10b981] font-semibold'
-                  : 'text-[#8da396] hover:text-[#dfe4e0]'
+                  ? 'text-[#059669] font-semibold'
+                  : 'text-[#66716B] hover:text-[#17201C]'
               }`}
             >
-              <Icon className={`w-5 h-5 transition-transform ${isActive ? 'scale-110 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]' : ''}`} />
-              <span className="font-mono text-[9px] tracking-tight truncate">
+              <Icon className={`w-5 h-5 transition-transform ${isActive ? 'scale-105' : ''}`} />
+              <span className="text-[10px] tracking-tight truncate font-medium">
                 {item.label}
               </span>
               {isActive && (
-                <span className="w-1 h-1 rounded-full bg-[#10b981] absolute bottom-0.5 shadow-[0_0_6px_#10b981]" />
+                <span className="w-1 h-1 rounded-full bg-[#059669] absolute bottom-0.5" />
               )}
             </button>
           );

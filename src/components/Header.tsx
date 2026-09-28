@@ -5,12 +5,10 @@ import {
   Layers,
   BookOpen,
   Search,
-  Terminal,
-  Sparkles,
+  Activity,
   ArrowLeft,
   Play,
-  CheckCircle2,
-  Atom
+  Leaf
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -31,13 +29,12 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSearch,
   onOpenTerminal,
   titleContext,
-  subtitleContext,
   showBack = false,
   isDemoMode = false,
   onToggleDemo
 }) => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-[#090e0c]/90 backdrop-blur-xl border-b border-[#1b2b22] transition-colors">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E5EAE7] transition-colors">
       <div className="h-16 px-4 sm:px-6 max-w-7xl mx-auto flex items-center justify-between gap-3">
         {/* Brand & Context */}
         <div className="flex items-center gap-3 min-w-0">
@@ -45,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onNavigate('candidates')}
               aria-label="Navigate back"
-              className="w-8 h-8 flex items-center justify-center rounded-lg text-[#8da396] hover:text-[#10b981] hover:bg-[#121c17] border border-[#1b2b22] transition-all shrink-0 cursor-pointer"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-[#66716B] hover:text-[#17201C] hover:bg-[#F3F6F4] border border-[#E5EAE7] transition-all shrink-0 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
@@ -55,42 +52,44 @@ export const Header: React.FC<HeaderProps> = ({
           <div
             onClick={() => onNavigate('product')}
             className="flex items-center gap-2.5 cursor-pointer select-none shrink-0 group"
-            title="VeganForm AI - Computational Food R&D Platform"
+            title="VeganForm AI — Computational Food R&D Platform"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#0e1713] border border-[#10b981]/40 flex items-center justify-center relative shadow-[0_0_12px_rgba(16,185,129,0.2)] group-hover:border-[#10b981] transition-all">
-              <Atom className="w-4 h-4 text-[#10b981] animate-spin-slow" />
+            <div className="w-8 h-8 rounded-lg bg-[#ECFDF5] border border-[#A7F3D0] flex items-center justify-center relative shadow-sm group-hover:border-[#059669] transition-all">
+              <Leaf className="w-4 h-4 text-[#059669]" />
             </div>
 
             <div className="flex flex-col">
-              <div className="flex items-center gap-1 font-bold text-sm tracking-tight text-white leading-none">
+              <div className="flex items-center gap-1 font-semibold text-[15px] tracking-tight text-[#17201C] leading-none">
                 <span>VeganForm</span>
-                <span className="text-[#10b981] font-mono text-xs">AI</span>
+                <span className="text-[#059669] font-medium text-xs bg-[#ECFDF5] px-1.5 py-0.5 rounded border border-[#A7F3D0]/60">AI</span>
               </div>
-              <span className="font-mono text-[9px] text-[#8da396] tracking-[0.14em] uppercase leading-tight font-medium mt-0.5">
-                COMPUTATIONAL FOOD R&amp;D
+              <span className="text-[10px] text-[#66716B] tracking-wider uppercase leading-tight font-medium mt-0.5">
+                Computational Food R&amp;D
               </span>
             </div>
           </div>
 
           {/* Section Breadcrumb Context Badge (Desktop) */}
-          <div className="hidden md:flex items-center pl-3 border-l border-[#1b2b22]">
-            <span className="px-2 py-0.5 rounded-md bg-[#121c17] text-[#10b981] font-mono text-[10px] tracking-wider border border-[#10b981]/25 font-semibold uppercase flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
-              {titleContext || 'R&D SUITE'}
-            </span>
-          </div>
+          {titleContext && (
+            <div className="hidden md:flex items-center pl-3 border-l border-[#E5EAE7]">
+              <span className="px-2 py-0.5 rounded-md bg-[#F8FAF9] text-[#66716B] text-[11px] font-medium border border-[#E5EAE7] flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#059669]" />
+                {titleContext}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Center / Right Navigation Controls */}
         <div className="flex items-center gap-2">
           {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center bg-[#0e1612] p-1 rounded-xl border border-[#1b2b22] text-xs font-mono">
+          <nav className="hidden lg:flex items-center bg-[#F8FAF9] p-1 rounded-xl border border-[#E5EAE7] text-xs">
             <button
               onClick={() => onNavigate('product')}
               className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
                 currentTab === 'product'
-                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
-                  : 'text-[#8da396] hover:text-white'
+                  ? 'bg-white text-[#059669] font-semibold shadow-xs border border-[#E5EAE7]'
+                  : 'text-[#66716B] hover:text-[#17201C]'
               }`}
             >
               <span>Overview</span>
@@ -100,8 +99,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onNavigate('formulate')}
               className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
                 currentTab === 'formulate'
-                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
-                  : 'text-[#8da396] hover:text-white'
+                  ? 'bg-white text-[#059669] font-semibold shadow-xs border border-[#E5EAE7]'
+                  : 'text-[#66716B] hover:text-[#17201C]'
               }`}
             >
               <FlaskConical className="w-3.5 h-3.5" />
@@ -112,8 +111,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onNavigate('candidates')}
               className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
                 currentTab === 'candidates' || currentTab === 'detail'
-                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
-                  : 'text-[#8da396] hover:text-white'
+                  ? 'bg-white text-[#059669] font-semibold shadow-xs border border-[#E5EAE7]'
+                  : 'text-[#66716B] hover:text-[#17201C]'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -124,8 +123,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onNavigate('knowledge')}
               className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
                 currentTab === 'knowledge'
-                  ? 'bg-[#18261f] text-[#10b981] font-semibold border border-[#10b981]/30 shadow-sm'
-                  : 'text-[#8da396] hover:text-white'
+                  ? 'bg-white text-[#059669] font-semibold shadow-xs border border-[#E5EAE7]'
+                  : 'text-[#66716B] hover:text-[#17201C]'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
@@ -136,45 +135,45 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Interactive Demo Mode Toggle CTA Button */}
           <button
             onClick={() => onToggleDemo ? onToggleDemo() : onNavigate('demo')}
-            className={`px-3 py-1.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer border ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer border ${
               isDemoMode
-                ? 'bg-amber-950/70 border-amber-500/60 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
-                : 'bg-[#14231b] hover:bg-[#182d22] border-[#10b981]/40 text-[#10b981] shadow-[0_0_10px_rgba(16,185,129,0.15)]'
+                ? 'bg-[#FEF3C7] border-[#FDE68A] text-[#92400E] shadow-xs'
+                : 'bg-[#F0FDF4] hover:bg-[#DCFCE7] border-[#BBF7D0] text-[#059669] shadow-xs'
             }`}
-            title={isDemoMode ? 'Click to exit Demo Mode' : 'Activate offline deterministic demonstration mode'}
+            title={isDemoMode ? 'Click to exit Demo Mode' : 'Activate offline demonstration mode'}
           >
             {isDemoMode ? (
               <>
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping shrink-0" />
-                <span>DEMO MODE ACTIVE</span>
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
+                <span>Demo Active</span>
               </>
             ) : (
               <>
-                <Play className="w-3.5 h-3.5 fill-[#10b981]" />
-                <span className="hidden sm:inline">Interactive Demo</span>
+                <Play className="w-3 h-3 fill-[#059669]" />
+                <span className="hidden sm:inline">Try Demo</span>
                 <span className="sm:hidden">Demo</span>
               </>
             )}
           </button>
 
-          {/* Telemetry Search Modal Button */}
+          {/* Search Trigger */}
           <button
             onClick={onOpenSearch}
-            aria-label="Diagnostic search"
-            className="w-9 h-9 flex items-center justify-center rounded-xl text-[#8da396] hover:text-[#10b981] hover:bg-[#121c17] border border-[#1b2b22] transition-colors cursor-pointer"
-            title="Search formulations & ingredients"
+            aria-label="Search formulations & ingredients"
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-[#66716B] hover:text-[#17201C] hover:bg-[#F3F6F4] border border-[#E5EAE7] transition-colors cursor-pointer bg-white"
+            title="Search formulations & ingredients (Cmd+K)"
           >
-            <Search className="w-4 h-4" />
+            <Search className="w-3.5 h-3.5" />
           </button>
 
-          {/* Laboratory System Terminal Trigger */}
+          {/* Diagnostics / Engine Telemetry */}
           <button
             onClick={onOpenTerminal}
-            aria-label="Laboratory system terminal"
-            className="w-9 h-9 flex items-center justify-center rounded-xl text-[#8da396] hover:text-[#10b981] hover:bg-[#121c17] border border-[#1b2b22] transition-colors cursor-pointer"
-            title="Open In-Silico Synthesis Terminal"
+            aria-label="Engine diagnostics"
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-[#66716B] hover:text-[#17201C] hover:bg-[#F3F6F4] border border-[#E5EAE7] transition-colors cursor-pointer bg-white"
+            title="R&D Engine Telemetry & Diagnostics"
           >
-            <Terminal className="w-4 h-4" />
+            <Activity className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

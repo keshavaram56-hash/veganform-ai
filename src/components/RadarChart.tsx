@@ -74,30 +74,15 @@ export const RadarChart: React.FC<RadarChartProps> = ({
   return (
     <div className="flex flex-col items-center select-none w-full">
       {title && (
-        <span className="font-mono text-xs text-[#8da396] mb-2">{title}</span>
+        <span className="text-xs font-semibold text-[#17201C] mb-2">{title}</span>
       )}
       <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
         <svg
           viewBox={`0 0 ${size} ${size}`}
           className="w-full h-full overflow-visible"
         >
-          <defs>
-            <radialGradient id="radarGridGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#00f5a0" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="#0a0f0d" stopOpacity="0" />
-            </radialGradient>
-            <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-            <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="2.5" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-
-          {/* Background circular ambient glow */}
-          <circle cx={center} cy={center} r={radius * 1.15} fill="url(#radarGridGlow)" />
+          {/* Subtle light background circle */}
+          <circle cx={center} cy={center} r={radius} fill="#F8FAF9" />
 
           {/* Concentric grid polygons */}
           {levels.map((level) => {
@@ -112,10 +97,9 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                 key={level}
                 points={points}
                 fill="none"
-                stroke="#1f382b"
+                stroke="#E5EAE7"
                 strokeWidth={level === 100 ? '1.5' : '1'}
                 strokeDasharray={level === 100 ? undefined : '2 2'}
-                className="opacity-70"
               />
             );
           })}
@@ -130,9 +114,9 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                 y1={center}
                 x2={x}
                 y2={y}
-                stroke="#1f382b"
+                stroke="#E5EAE7"
                 strokeWidth="1"
-                className={hoveredAxis === idx ? 'stroke-[#00f5a0]/60' : ''}
+                className={hoveredAxis === idx ? 'stroke-[#059669]' : ''}
               />
             );
           })}
@@ -141,14 +125,13 @@ export const RadarChart: React.FC<RadarChartProps> = ({
           {series.map((s) => {
             const points = getPolygonPoints(s.values);
             return (
-              <g key={s.id} className="transition-all duration-500">
+              <g key={s.id} className="transition-all duration-300">
                 <polygon
                   points={points}
-                  fill={s.fillColor || `${s.color}22`}
+                  fill={s.fillColor || `${s.color}15`}
                   stroke={s.color}
                   strokeWidth={s.strokeWidth || 2}
                   strokeDasharray={s.strokeDash}
-                  style={s.glow ? { filter: 'drop-shadow(0 0 6px rgba(0, 245, 160, 0.65))' } : undefined}
                 />
                 {/* Dots at vertices */}
                 {s.values.map((val, idx) => {
@@ -158,10 +141,9 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                       key={idx}
                       cx={x}
                       cy={y}
-                      r={s.glow ? 3.5 : 2.5}
+                      r={2.5}
                       fill={s.color}
-                      style={s.glow ? { filter: 'drop-shadow(0 0 4px #00f5a0)' } : undefined}
-                      className="cursor-pointer hover:r-5 transition-all"
+                      className="cursor-pointer hover:r-4 transition-all"
                     />
                   );
                 })}
@@ -172,7 +154,6 @@ export const RadarChart: React.FC<RadarChartProps> = ({
           {/* Axis Labels */}
           {axes.map((axis, idx) => {
             const { x, y } = getLabelCoordinates(idx);
-            // Text anchor calculation based on position relative to center
             let textAnchor: 'middle' | 'start' | 'end' = 'middle';
             if (x > center + 10) textAnchor = 'start';
             else if (x < center - 10) textAnchor = 'end';
@@ -185,8 +166,8 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                 x={x}
                 y={y + 4}
                 textAnchor={textAnchor}
-                className={`font-mono text-[9px] font-semibold tracking-wider transition-colors cursor-pointer select-none ${
-                  isHovered ? 'fill-[#00f5a0] text-shadow' : 'fill-[#8da396]'
+                className={`text-[10px] font-medium transition-colors cursor-pointer select-none ${
+                  isHovered ? 'fill-[#059669] font-semibold' : 'fill-[#66716B]'
                 }`}
                 onMouseEnter={() => setHoveredAxis(idx)}
                 onMouseLeave={() => setHoveredAxis(null)}
@@ -200,17 +181,14 @@ export const RadarChart: React.FC<RadarChartProps> = ({
 
       {/* Legend */}
       {legend && series.length > 0 && (
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-[#1f382b]/60 w-full mt-2 font-mono text-[11px]">
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-[#E5EAE7] w-full mt-2 text-xs">
           {series.map((s) => (
             <div key={s.id} className="flex items-center gap-1.5">
               <span
-                className="w-3 h-1.5 rounded-full"
-                style={{
-                  backgroundColor: s.color,
-                  boxShadow: s.glow ? `0 0 6px ${s.color}` : undefined
-                }}
+                className="w-2.5 h-2.5 rounded-full"
+                style={{ backgroundColor: s.color }}
               />
-              <span className={s.glow ? 'text-white font-medium' : 'text-[#8da396]'}>
+              <span className="text-[#66716B] font-medium">
                 {s.name}
               </span>
             </div>
