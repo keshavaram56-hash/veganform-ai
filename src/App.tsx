@@ -204,9 +204,27 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAF9] text-[#17201C] font-sans selection:bg-emerald-100 selection:text-emerald-900 flex flex-col relative overflow-x-hidden">
-      {/* Subtle clean background grid */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(#E5EAE7_1px,transparent_1px)] [background-size:24px_24px] opacity-60" />
+    <div className="min-h-screen text-[#10231D] font-sans selection:bg-[#F7DDE3] selection:text-[#063B2E] flex flex-col relative overflow-x-hidden">
+      {/* Subtle Ambient Gradient Depth System (Natural Ambient Room Illumination) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        {/* Warm sandalwood glow - upper-left region behind hero & overview */}
+        <div className="absolute -top-[15%] -left-[10%] w-[65vw] h-[65vw] max-w-[920px] max-h-[920px] rounded-full bg-[#E8D5C4] opacity-40 blur-[150px]" />
+
+        {/* Soft cream transition glow - center-right region behind workflow & interactive graphs */}
+        <div className="absolute top-[26%] -right-[8%] w-[55vw] h-[55vw] max-w-[820px] max-h-[820px] rounded-full bg-[#F6E9E4] opacity-55 blur-[135px]" />
+
+        {/* Creamy ivory bridge glow - mid-page section */}
+        <div className="absolute top-[48%] left-[18%] w-[50vw] h-[50vw] max-w-[760px] max-h-[760px] rounded-full bg-[#FAF2EF] opacity-60 blur-[140px]" />
+
+        {/* Very pale blush pink glow - lower-left region behind formulation controls */}
+        <div className="absolute top-[66%] -left-[8%] w-[55vw] h-[55vw] max-w-[850px] max-h-[850px] rounded-full bg-[#FBECEF] opacity-50 blur-[150px]" />
+
+        {/* Soft baby-pink glow - bottom-right region behind candidate matrices & analytics */}
+        <div className="absolute -bottom-[12%] -right-[6%] w-[62vw] h-[62vw] max-w-[940px] max-h-[940px] rounded-full bg-[#F7DDE3] opacity-45 blur-[160px]" />
+
+        {/* Scientific micro-dot grid for precision food R&D texture */}
+        <div className="absolute inset-0 bg-[radial-gradient(#C5B4A5_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
+      </div>
 
       {/* Persistent Global Header */}
       <Header
@@ -227,23 +245,23 @@ export default function App() {
 
       {/* Persistent Top Demo Mode Banner (when Demo Mode is active) */}
       {isDemoMode && (
-        <div className="sticky top-16 z-30 bg-[#FFFBEB] border-b border-[#FDE68A] px-4 py-2 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 shadow-xs">
-          <div className="flex items-center gap-2 text-[#92400E]">
+        <div className="sticky top-16 z-30 bg-[#fffbeb] border-b border-[#fde68a] px-4 py-2 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 shadow-xs">
+          <div className="flex items-center gap-2 text-[#92400e]">
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
-            <span className="font-semibold">Demo Mode Active:</span>
-            <span className="text-[#78350F] hidden sm:inline">Deterministic In-Silico R&amp;D Simulation</span>
+            <span className="font-semibold font-mono text-[11px]">DEMO MODE ACTIVE:</span>
+            <span className="text-[#78350f] hidden sm:inline">Deterministic In-Silico R&amp;D Simulation</span>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap justify-center">
-            <span className="text-[11px] text-[#92400E] font-medium hidden md:inline">Quick Demo Targets:</span>
+            <span className="text-[10px] font-mono text-[#92400e] font-semibold hidden md:inline">QUICK TARGETS:</span>
             {['Chicken Nugget', 'Mozzarella Cheese', 'Milk', 'Ice Cream', 'Egg', 'Mayonnaise'].map((target) => (
               <button
                 key={target}
                 onClick={() => handleActivateDemo(target)}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                   activeProductName.toLowerCase() === target.toLowerCase()
-                    ? 'bg-[#059669] text-white shadow-xs'
-                    : 'bg-white text-[#66716B] hover:text-[#17201C] border border-[#E5EAE7]'
+                    ? 'bg-[#063B2E] text-white shadow-xs'
+                    : 'bg-white text-[#61706A] hover:text-[#10231D] border border-[#D9E2DC]'
                 }`}
               >
                 {target}
@@ -252,7 +270,7 @@ export default function App() {
 
             <button
               onClick={handleExitDemo}
-              className="ml-2 px-2.5 py-1 rounded-md bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer"
+              className="ml-2 px-2.5 py-1 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer"
             >
               <X className="w-3.5 h-3.5" />
               <span>Exit Demo</span>
@@ -277,6 +295,10 @@ export default function App() {
               setCurrentTab('detail');
             }}
             onActivateDemo={handleActivateDemo}
+            onSelectTargetFood={(targetName) => {
+              setActiveProductName(targetName);
+              setCurrentTab('formulate');
+            }}
           />
         )}
 
@@ -373,9 +395,9 @@ export default function App() {
 
       {/* Toast Notification Banner */}
       {toastMessage && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-white border border-[#E5EAE7] text-[#17201C] text-xs shadow-dropdown flex items-center gap-2.5 animate-bounce-subtle">
-          <span className="w-2 h-2 rounded-full bg-[#059669] shrink-0" />
-          <span className="font-medium">{toastMessage}</span>
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-2xl bg-white border border-[#D9E2DC] text-[#10231D] text-xs font-mono shadow-dropdown flex items-center gap-2.5 animate-bounce-subtle">
+          <span className="w-2 h-2 rounded-full bg-[#35D39A] animate-ping shrink-0" />
+          <span className="font-semibold">{toastMessage}</span>
         </div>
       )}
     </div>

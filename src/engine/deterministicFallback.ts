@@ -699,6 +699,443 @@ export function generateDeterministicFormulations(
         ]
       }
     ];
+  } else if (productNameLower.includes('salmon')) {
+    // SALMON CANDIDATES
+    candidateTemplates = [
+      {
+        name: 'Atlantic Plant Salmon Filet',
+        code: 'VFA-SLM-701',
+        tagline: 'Lamellar Myotome Flake Spec • Multi-layered wet extrusion replicating cold-water salmon flake and Omega-3 melt',
+        baseIsolate: hasSoyAllergen ? 'Pea + Konjac + Tapioca' : 'Pea + Soy Micro-Matrix',
+        tasteMatch: Math.min(96, Math.max(78, Math.round(request.tastePriority * 0.95))),
+        textureParity: Math.min(97, Math.max(80, Math.round(request.texturePriority * 0.96))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Myotome Flake Scaffold', wtPercent: 21.0, highlight: true },
+          { name: 'Tapioca Starch (Modified Cassava)', function: 'Tender Lamellar Cleavage', wtPercent: 6.5, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Aqueous Phase', wtPercent: 54.5 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Omega-3 Marine Lipid Emulsion', wtPercent: 8.5 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Intramuscular Fat Marbling', wtPercent: 4.5 },
+          { name: 'Shiitake & Button Mushroom Extract', function: 'Oceanic Umami & Trimethylamine Parity', wtPercent: 2.0 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Marine Saline & Natural Astaxanthin Pigment', wtPercent: 3.0 }
+        ],
+        rationales: [
+          {
+            title: 'Lamellar Myotome Layering',
+            icon: 'layers',
+            description: 'Co-extruded alternating protein and lipid sheets replicate the w-shaped muscle bands and connective myosepta of wild salmon.'
+          },
+          {
+            title: 'Marine Omega-3 Emulsification',
+            icon: 'water_drop',
+            description: 'Botanical lipid fractions enriched with algal polyunsaturated fatty acids mimic the unctuous melting point of fresh salmon belly.'
+          },
+          {
+            title: 'Natural Astaxanthin Color Stability',
+            icon: 'palette',
+            description: 'Microalgae astaxanthin provides photostable coral-orange hue that resists oxidation and fading under pan sear heat.'
+          }
+        ]
+      },
+      {
+        name: 'Smoked Botanical Salmon Sashimi',
+        code: 'VFA-SLM-715',
+        tagline: 'Raw Sashimi Grade • Delicate melt-in-mouth translucency with birchwood cold-smoke infusion',
+        baseIsolate: 'Konjac + Tapioca + Algal Matrix',
+        tasteMatch: Math.min(94, Math.max(76, Math.round(request.tastePriority * 0.92))),
+        textureParity: Math.min(95, Math.max(78, Math.round(request.texturePriority * 0.94))),
+        rawIngredients: [
+          { name: 'Tapioca Starch (Modified Cassava)', function: 'Translucent Sashimi Body', wtPercent: 12.0, highlight: true },
+          { name: 'Pea Protein Isolate 85%', function: 'Protein Micronetwork', wtPercent: 8.0, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Hydration Base', wtPercent: 64.0 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Silky Cold Mouthfeel', wtPercent: 9.0 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Marine Osmolality & Seaweed Extract', wtPercent: 4.5 },
+          { name: 'Beetroot Powder & Thermal Betalain Extract', function: 'Translucent Salmon Pigment', wtPercent: 2.5 }
+        ],
+        rationales: [
+          {
+            title: 'Elastic Gel Translucency',
+            icon: 'visibility',
+            description: 'Hydrated botanical hydrocolloids yield a soft, glassy matrix with identical optical refractive index to raw oceanic teleost flesh.'
+          },
+          {
+            title: 'Clean Knife-Cut Integrity',
+            icon: 'content_cut',
+            description: 'Holds razor-sharp sashimi slice edges at 4°C chilled sushi bar temperatures without weeping moisture or tearing.'
+          },
+          {
+            title: 'Zero Heavy Metal Contamination',
+            icon: 'verified_user',
+            description: 'Eliminates marine methylmercury, microplastics, and PCB toxins while delivering authentic raw salmon dining experience.'
+          }
+        ]
+      },
+      {
+        name: 'Crisp-Skin Omega-3 Salmon Burger',
+        code: 'VFA-SLM-690',
+        tagline: 'High-Heat Sear Spec • Coarse flaked salmon patty engineered for crispy pan frying and grilling',
+        baseIsolate: hasSoyAllergen ? 'Pea + Chickpea Flake' : 'Pea + Soy Flake',
+        tasteMatch: Math.min(92, Math.max(74, Math.round(request.tastePriority * 0.89))),
+        textureParity: Math.min(93, Math.max(76, Math.round(request.texturePriority * 0.91))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Coarse Flake Granules', wtPercent: 22.0, highlight: true },
+          hasSoyAllergen
+            ? { name: 'Chickpea Flour (Besan)', function: 'Crisping Binder', wtPercent: 10.0 }
+            : { name: 'Soy Protein Isolate 90%', function: 'Dense Flake Matrix', wtPercent: 10.0 },
+          { name: 'Potato Starch', function: 'Thermal Crust Crispness', wtPercent: 5.0 },
+          { name: 'Purified Hydration Water', function: 'Moisture Carrier', wtPercent: 48.0 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Pan Sear Juiciness', wtPercent: 8.0 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Omega-3 Lipid Blend', wtPercent: 4.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Herb & Marine Seasoning', wtPercent: 2.5 }
+        ],
+        rationales: [
+          {
+            title: 'Coarse Flake Retention',
+            icon: 'grain',
+            description: 'High-pressure granulation preserves 4-8mm botanical salmon flakes that break apart naturally under gentle chew pressure.'
+          },
+          {
+            title: 'Maillard Crust Caramelization',
+            icon: 'local_fire_department',
+            description: 'Forms a golden-crisp surface seal on hot griddles within 90 seconds while sealing in volatile steam moisture inside.'
+          },
+          {
+            title: 'Sustainable Ocean Conservation',
+            icon: 'eco',
+            description: 'Replaces open-pen ocean salmon aquaculture, sparing wild marine forage fish stocks and marine sensitive habitats.'
+          }
+        ]
+      }
+    ];
+  } else if (productNameLower.includes('fish') || productNameLower.includes('cod') || productNameLower.includes('pollock')) {
+    // WHITE FISH CANDIDATES
+    candidateTemplates = [
+      {
+        name: 'Konjac & Pea Flaked Cod Fillet',
+        code: 'VFA-FSH-801',
+        tagline: 'Delicate Flake Spec • Pearlescent white cod analog with brittle lamellar shear and gentle oceanic salinity',
+        baseIsolate: 'Pea Protein + Modified Tapioca',
+        tasteMatch: Math.min(95, Math.max(77, Math.round(request.tastePriority * 0.94))),
+        textureParity: Math.min(96, Math.max(79, Math.round(request.texturePriority * 0.95))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Fleshy Flake Base', wtPercent: 18.0, highlight: true },
+          { name: 'Tapioca Starch (Modified Cassava)', function: 'Brittle Lamellar Fracture', wtPercent: 8.5, highlight: true },
+          { name: 'Potato Starch', function: 'Moisture Gel Binder', wtPercent: 5.5 },
+          { name: 'Purified Hydration Water', function: 'High-Moisture Matrix (74%)', wtPercent: 58.0 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Mild Clean Lubricity', wtPercent: 4.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Clean Marine Minerals & Kelp Savory', wtPercent: 3.5 },
+          { name: 'Methylcellulose (Thermal Gel Grade)', function: 'Thermal Cohesion Upon Poaching', wtPercent: 2.0 }
+        ],
+        rationales: [
+          {
+            title: 'Pearlescent Lamellar Cleavage',
+            icon: 'layers',
+            description: 'Calibrated starch retrogradation mimics the delicate, non-elastic sheet fractures characteristic of poached North Atlantic cod.'
+          },
+          {
+            title: 'High Moisture Entrapment',
+            icon: 'water_drop',
+            description: 'Cross-linked hydrocolloid matrix retains 74% water content during thermal cooking without release of cloudy broth liquid.'
+          },
+          {
+            title: 'Ultra-Clean Oceanic Neutrality',
+            icon: 'clean_hands',
+            description: 'Subtle marine kelp extracts eliminate strong beany plant notes, providing a pristine canvas for lemon, butter, and herb sauces.'
+          }
+        ]
+      },
+      {
+        name: 'Crispy Panko Battered Whitefish',
+        code: 'VFA-FSH-812',
+        tagline: 'Pub Classic Spec • Moist tender white fish fillet encased in ultra-crisp golden panko crumb',
+        baseIsolate: hasGlutenAllergen ? 'Pea + Chickpea Flake' : 'Pea + Wheat Crumb Scaffold',
+        tasteMatch: Math.min(94, Math.max(76, Math.round(request.tastePriority * 0.92))),
+        textureParity: Math.min(95, Math.max(78, Math.round(request.texturePriority * 0.94))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'White Core Flake', wtPercent: 20.0, highlight: true },
+          { name: 'Chickpea Flour (Besan)', function: 'Adhesion Batter Binder', wtPercent: 12.0 },
+          { name: 'Potato Starch', function: 'Steam Vapor Barrier', wtPercent: 6.0 },
+          { name: 'Purified Hydration Water', function: 'Continuous Water Matrix', wtPercent: 50.0 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Internal Moistness', wtPercent: 7.0 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Saline Balance', wtPercent: 3.5 },
+          { name: 'Nutritional Yeast (Fortified Flakes)', function: 'Savory Broth Tone', wtPercent: 1.5 }
+        ],
+        rationales: [
+          {
+            title: 'Dual-Phase Fry Barrier',
+            icon: 'security',
+            description: 'Starch batter prevents deep fryer oil from penetrating the delicate fish core while flash-evaporating surface steam for acoustic crunch.'
+          },
+          {
+            title: 'Fork-Tender Flaking',
+            icon: 'restaurant',
+            description: 'Separates into distinct horizontal flakes upon gentle fork pressure, precisely matching deep-fried cod or haddock.'
+          },
+          {
+            title: 'Zero Fisheries Depletion',
+            icon: 'shield',
+            description: 'Protects fragile demersal seabed ecosystems from destructive bottom-trawling commercial fishing gear.'
+          }
+        ]
+      },
+      {
+        name: 'Clean-Label Steamed Pollock Loins',
+        code: 'VFA-FSH-795',
+        tagline: 'Minimal Ingredient Spec • Whole-food plant formulation free of synthetic gums and methylcellulose',
+        baseIsolate: 'Pea Protein + Potato Starch',
+        tasteMatch: Math.min(91, Math.max(73, Math.round(request.tastePriority * 0.88))),
+        textureParity: Math.min(92, Math.max(75, Math.round(request.texturePriority * 0.90))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Protein Densification', wtPercent: 19.0, highlight: true },
+          { name: 'Potato Starch', function: 'Native Starch Gelation', wtPercent: 10.0, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Steam Water Phase', wtPercent: 61.0 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Delicate Sheen & Lubricity', wtPercent: 4.5 },
+          { name: 'Tapioca Starch (Modified Cassava)', function: 'Soft Texture Standardizer', wtPercent: 3.0 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Clean Marine Salinity', wtPercent: 2.5 }
+        ],
+        rationales: [
+          {
+            title: '100% Native Starch Cohesion',
+            icon: 'eco',
+            description: 'Utilizes thermal gelatinization of native potato starch to achieve structural hold without chemical cross-linking additives.'
+          },
+          {
+            title: 'Hypoallergenic Formulation',
+            icon: 'health_and_safety',
+            description: 'Completely free from soy, gluten, nuts, egg, dairy, fish, and shellfish, satisfying institutional hospital and school menus.'
+          },
+          {
+            title: 'Rapid High-Volume Scalability',
+            icon: 'speed',
+            description: 'Streamlined continuous low-temperature forming line allows high throughput at minimal industrial utility cost.'
+          }
+        ]
+      }
+    ];
+  } else if (productNameLower.includes('mutton') || productNameLower.includes('lamb') || productNameLower.includes('goat')) {
+    // MUTTON CANDIDATES
+    candidateTemplates = [
+      {
+        name: 'Slow-Braised Botanical Mutton Chunk',
+        code: 'VFA-MUT-901',
+        tagline: 'High-Shear Braise Spec • Dense slow-twitch muscle fibers with rich ovine tallow mouth-coating and warm gamey depth',
+        baseIsolate: hasGlutenAllergen ? 'Pea + Jackfruit Core' : 'Pea + Wheat Gluten + Jackfruit',
+        tasteMatch: Math.min(96, Math.max(78, Math.round(request.tastePriority * 0.95))),
+        textureParity: Math.min(97, Math.max(80, Math.round(request.texturePriority * 0.97))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Dense Fibrillar Core', wtPercent: 22.0, highlight: true },
+          { name: 'Young Green Jackfruit (Shredded Pulp)', function: 'Coarse Muscle Striations', wtPercent: 16.0, highlight: true },
+          hasGlutenAllergen
+            ? { name: 'Chickpea Flour (Besan)', function: 'Cohesive Density Binder', wtPercent: 8.0 }
+            : { name: 'Vital Wheat Gluten (Seitan Base)', function: 'Slow-Twitch Tensile Resistance', wtPercent: 8.0 },
+          { name: 'Purified Hydration Water', function: 'Deep Braising Hydration', wtPercent: 40.0 },
+          { name: 'Refined Coconut Oil', function: 'High-Melting Ovine Tallow Mimic', wtPercent: 6.5 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Lipid Dispersion & Juiciness', wtPercent: 3.5 },
+          { name: 'Shiitake & Button Mushroom Extract', function: 'BCFA Ovine Umami Synergy', wtPercent: 2.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Roasted Cumin, Cardamom & Saline', wtPercent: 1.5 }
+        ],
+        rationales: [
+          {
+            title: 'High-Tallow Melting Transition',
+            icon: 'opacity',
+            description: 'Fractionated lauric lipids replicate the high melting point (44°C) of ovine tallow, providing that signature lingering savory coat.'
+          },
+          {
+            title: 'Slow-Twitch Muscle Tensile Pull',
+            icon: 'fitness_center',
+            description: 'Interwoven unripened jackfruit and extruded legume fibrils resist prolonged curry stewing without disintegrating into mush.'
+          },
+          {
+            title: 'Branched-Chain Fatty Acid Mimicry',
+            icon: 'science',
+            description: 'Synergistic mushroom nucleotide and natural spice botanicals emulate 4-methyloctanoic acid gamey depth without off-flavors.'
+          }
+        ]
+      },
+      {
+        name: 'High-Shear Kebab Mutton Mince',
+        code: 'VFA-MUT-914',
+        tagline: 'Seekh & Skewer Spec • High-yield mince that molds onto skewers and withstands open charcoal grilling',
+        baseIsolate: hasSoyAllergen ? 'Pea + Chickpea Mince' : 'Pea + Soy Mince',
+        tasteMatch: Math.min(94, Math.max(76, Math.round(request.tastePriority * 0.92))),
+        textureParity: Math.min(95, Math.max(78, Math.round(request.texturePriority * 0.94))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Coarse Mince Granule', wtPercent: 24.0, highlight: true },
+          hasSoyAllergen
+            ? { name: 'Chickpea Flour (Besan)', function: 'Fat Entrapment & Binder', wtPercent: 10.0 }
+            : { name: 'Soy Protein Isolate 90%', function: 'High-Tensile Binding Mince', wtPercent: 10.0 },
+          { name: 'Refined Coconut Oil', function: 'Charcoal Sizzle Tallow', wtPercent: 8.0, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Moisture Phase', wtPercent: 46.0 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Fluid Juiciness', wtPercent: 5.5 },
+          { name: 'Nutritional Yeast (Fortified Flakes)', function: 'Deep Savory Character', wtPercent: 3.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Aromatic Garam Masala Blend', wtPercent: 3.0 }
+        ],
+        rationales: [
+          {
+            title: 'Skewer Adhesion & Tensile Grip',
+            icon: 'vertical_align_center',
+            description: 'Thermal-setting protein matrix adheres firmly around metal seekh skewers without sliding down into hot coals.'
+          },
+          {
+            title: 'Charcoal Sizzle Rendering',
+            icon: 'local_fire_department',
+            description: 'Lipids render continuously during grilling, producing mouthwatering flame flares and authentic charcoal smoke deposits.'
+          },
+          {
+            title: '88% Lower Greenhouse Gas Intensity',
+            icon: 'eco',
+            description: 'Ruminant ovine livestock generates 39.2 kg CO2e/kg; this botanical formulation delivers full flavor parity at 2.4 kg CO2e.'
+          }
+        ]
+      },
+      {
+        name: 'Highland Jackfruit Rogan Josh Scaffold',
+        code: 'VFA-MUT-885',
+        tagline: 'Clean-Label Curry Spec • 100% whole botanical fibers infused with Kashmiri saffron and caramelized shallot',
+        baseIsolate: 'Whole Jackfruit + Pea Isolate',
+        tasteMatch: Math.min(92, Math.max(74, Math.round(request.tastePriority * 0.89))),
+        textureParity: Math.min(93, Math.max(76, Math.round(request.texturePriority * 0.91))),
+        rawIngredients: [
+          { name: 'Young Green Jackfruit (Shredded Pulp)', function: 'Natural Muscle Scaffold', wtPercent: 28.0, highlight: true },
+          { name: 'Pea Protein Isolate 85%', function: 'Protein Enrichment (16g/100g)', wtPercent: 16.0, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Aromatic Simmering Base', wtPercent: 42.0 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Curry Sauce Gloss & Body', wtPercent: 6.0 },
+          { name: 'Refined Coconut Oil', function: 'Solid Lipid Melting', wtPercent: 4.0 },
+          { name: 'Nutritional Yeast (Fortified Flakes)', function: 'Savory Broth Fortification', wtPercent: 2.0 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Kashmiri Spice Infusion', wtPercent: 2.0 }
+        ],
+        rationales: [
+          {
+            title: 'Cellular Marinade Uptake',
+            icon: 'opacity',
+            description: 'Porous vascular structure of green jackfruit draws aromatic whole spices and fat directly into the core of each piece.'
+          },
+          {
+            title: 'Dietary Fiber Colon Prebiotic',
+            icon: 'favorite_border',
+            description: 'Supplies 6.8g dietary fiber per serving while animal mutton contains zero fiber and high saturated cholesterol.'
+          },
+          {
+            title: 'Commercial Retort Pack Stability',
+            icon: 'inventory',
+            description: 'Withstands 121°C commercial retort sterilization in curry pouches with 18-month ambient shelf life.'
+          }
+        ]
+      }
+    ];
+  } else if (productNameLower.includes('beef') || productNameLower.includes('burger') || productNameLower.includes('patty') || productNameLower.includes('steak')) {
+    // BEEF CANDIDATES
+    candidateTemplates = [
+      {
+        name: 'High-Tensile Sizzle Smash Beef Patty',
+        code: 'VFA-BEF-001',
+        tagline: 'Smash Burger Master Spec • High-heat griddle sear with crispy caramelized lacy edges and juicy interior bite',
+        baseIsolate: hasSoyAllergen ? 'Pea + Wheat Gluten' : 'Pea + Soy Protein Isolate',
+        tasteMatch: Math.min(97, Math.max(80, Math.round(request.tastePriority * 0.96))),
+        textureParity: Math.min(97, Math.max(82, Math.round(request.texturePriority * 0.97))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Coarse Muscle Granule', wtPercent: 21.0, highlight: true },
+          hasSoyAllergen
+            ? { name: 'Chickpea Flour (Besan)', function: 'Cohesive Patty Binder', wtPercent: 8.0 }
+            : { name: 'Soy Protein Isolate 90%', function: 'Tensile Springy Chew', wtPercent: 8.0 },
+          { name: 'Refined Coconut Oil', function: 'Marbled Fat Pockets (Melt Rendering)', wtPercent: 12.0, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Juiciness Water Phase', wtPercent: 44.0 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Secondary Lipid Emulsion', wtPercent: 6.0 },
+          { name: 'Methylcellulose (Thermal Gel Grade)', function: 'Hot Patty Cohesion On Grill', wtPercent: 1.5, highlight: true },
+          { name: 'Shiitake & Button Mushroom Extract', function: 'Heme Pyrazine Volatile Catalyst', wtPercent: 3.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Mineral & Maillard Browning Agent', wtPercent: 2.5 },
+          { name: 'Beetroot Powder & Thermal Betalain Extract', function: 'Raw-to-Cooked Visual Chromatic Shift', wtPercent: 1.5 }
+        ],
+        rationales: [
+          {
+            title: 'Biphasic Lipid Melting Kinetics',
+            icon: 'local_fire_department',
+            description: 'Chilled coconut fat pockets remain solid until hitting 180°C griddles, flash-frying the exterior lacy edges in rendered lipid.'
+          },
+          {
+            title: 'Heme-Free Pyrazine Maillard Browning',
+            icon: 'flare',
+            description: 'Reductive sugars and mushroom nucleotides drive identical crust aromas to flame-grilled chuck beef at 160°C.'
+          },
+          {
+            title: 'Dynamic Thermal Betalain Decolorization',
+            icon: 'invert_colors',
+            description: 'Beet betalain pigment degrades above 70°C, transitioning visually from raw red to caramelized mahogany exactly like animal beef.'
+          }
+        ]
+      },
+      {
+        name: 'Biphasic Marbled Ground Beef Mince',
+        code: 'VFA-BEF-015',
+        tagline: 'Culinary Versatility Spec • 80/20 ground beef analogue for bolognese, tacos, and meatballs',
+        baseIsolate: hasGlutenAllergen ? 'Pea + Chickpea Flake' : 'Pea + Wheat Gluten',
+        tasteMatch: Math.min(94, Math.max(76, Math.round(request.tastePriority * 0.93))),
+        textureParity: Math.min(95, Math.max(78, Math.round(request.texturePriority * 0.94))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Structured Ground Mince', wtPercent: 23.0, highlight: true },
+          hasGlutenAllergen
+            ? { name: 'Potato Starch', function: 'Moisture Sealer', wtPercent: 5.5 }
+            : { name: 'Vital Wheat Gluten (Seitan Base)', function: 'Fibrous Meat Chew', wtPercent: 7.0 },
+          { name: 'Refined Coconut Oil', function: '20% Solid Fat Standard', wtPercent: 11.5, highlight: true },
+          { name: 'Purified Hydration Water', function: 'Hydration Carrier', wtPercent: 46.5 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Pan Browning Lubricant', wtPercent: 5.0 },
+          { name: 'Nutritional Yeast (Fortified Flakes)', function: 'Rich Beef Bouillon Savory', wtPercent: 3.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Seasoning Matrix', wtPercent: 2.0 },
+          { name: 'Beetroot Powder & Thermal Betalain Extract', function: 'Red Meat Pigment', wtPercent: 1.5 }
+        ],
+        rationales: [
+          {
+            title: 'Crumb Cohesion in Simmering Sauces',
+            icon: 'soup_kitchen',
+            description: 'Maintains discrete, tender beef granules in acidic tomato marinara sauces without softening into slurry.'
+          },
+          {
+            title: '80/20 Lean-to-Fat Ratio Matching',
+            icon: 'pie_chart',
+            description: 'Formulated to standard butcher specifications: 19g complete protein and 15g healthy botanical fats per 100g.'
+          },
+          {
+            title: 'Zero Bovine Antibiotics & Hormones',
+            icon: 'healing',
+            description: 'Eliminates agricultural antibiotic resistance vectors and livestock endocrine disruptors from consumer diets.'
+          }
+        ]
+      },
+      {
+        name: 'Clean-Label Mycelium Bistro Burger',
+        code: 'VFA-BEF-028',
+        tagline: 'Whole Food Biotech Spec • Fermented fungal biomass and botanical legume blend with zero synthetic hydrocolloids',
+        baseIsolate: 'Mycelium + Pea Isolate',
+        tasteMatch: Math.min(93, Math.max(75, Math.round(request.tastePriority * 0.91))),
+        textureParity: Math.min(94, Math.max(77, Math.round(request.texturePriority * 0.93))),
+        rawIngredients: [
+          { name: 'Pea Protein Isolate 85%', function: 'Protein Densification', wtPercent: 20.0, highlight: true },
+          { name: 'Young Green Jackfruit (Shredded Pulp)', function: 'Natural Muscle Fibers', wtPercent: 14.0, highlight: true },
+          { name: 'Potato Starch', function: 'Native Starch Binding', wtPercent: 6.0 },
+          { name: 'Purified Hydration Water', function: 'Water Matrix', wtPercent: 44.0 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Liquid Lipid Phase', wtPercent: 7.0 },
+          { name: 'Refined Coconut Oil', function: 'Solid Lipid Sizzle', wtPercent: 4.5 },
+          { name: 'Shiitake & Button Mushroom Extract', function: 'Natural Forest Umami', wtPercent: 2.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Mineral Balance', wtPercent: 2.0 }
+        ],
+        rationales: [
+          {
+            title: 'Natural Mycelial Micro-Branches',
+            icon: 'nature',
+            description: 'Microscopic hyphal branches entangle with botanical legume proteins to form an elastic matrix without added methylcellulose.'
+          },
+          {
+            title: 'Native Glutamate Umami Reservoir',
+            icon: 'auto_awesome',
+            description: 'Shiitake and fungal biomass naturally supply 1.4g natural glutamic acid per 100g for deep roasted meat mouthfeel.'
+          },
+          {
+            title: '96% Land & Water Reduction',
+            icon: 'water_drop',
+            description: 'Bovine agriculture requires 250m² of pasture per kg of beef; precision botanical processing requires under 8m².'
+          }
+        ]
+      }
+    ];
   } else {
     // UNKNOWN / CUSTOM PRODUCT
     candidateTemplates = [
@@ -733,78 +1170,77 @@ export function generateDeterministicFormulations(
           },
           {
             title: 'Preliminary R&D Blueprint',
-            icon: 'science',
-            description: 'Serves as an exploratory simulation model. Wet-lab rheological verification recommended.'
+            icon: 'assignment',
+            description: `Baseline starting ratio for ${request.productName}. Pilot extrusion iterations recommended to dial in cellular alignment.`
           }
         ]
       },
       {
-        name: `Artisanal Whole Botanical ${request.productName} B-2`,
+        name: `High-Fiber Botanical ${request.productName}`,
         code: `VFA-GEN-02`,
-        tagline: `Clean-Label Formulation • Focused on natural fiber texture with zero artificial binders`,
-        baseIsolate: 'Whole Botanical Blend',
+        tagline: `Clean-Label Whole Food Matrix • Fortified with intact botanical fibers for enhanced texture resistance`,
+        baseIsolate: 'Pea + Jackfruit Scaffold',
         tasteMatch: Math.min(90, Math.max(72, Math.round(request.tastePriority * 0.88))),
-        textureParity: Math.min(91, Math.max(74, Math.round(request.texturePriority * 0.89))),
+        textureParity: Math.min(92, Math.max(74, Math.round(request.texturePriority * 0.90))),
         rawIngredients: [
-          { name: 'Young Green Jackfruit (Shredded Pulp)', function: 'Natural Fiber Striation', wtPercent: 26.0, highlight: true },
-          { name: 'Pea Protein Isolate 85%', function: 'Protein Densification', wtPercent: 16.0, highlight: true },
-          { name: 'Purified Hydration Water', function: 'Hydration Phase', wtPercent: 44.0 },
-          { name: 'High-Oleic Sunflower Oil', function: 'Lipid Lubrication', wtPercent: 6.0 },
-          { name: 'Potato Starch', function: 'Moisture Sealing Binder', wtPercent: 4.5 },
-          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Flavor Balancer', wtPercent: 2.0 },
-          { name: 'Shiitake & Button Mushroom Extract', function: 'Natural Umami Booster', wtPercent: 1.5 }
+          { name: 'Young Green Jackfruit (Shredded Pulp)', function: 'Structural Bulking Fiber', wtPercent: 20.0, highlight: true },
+          { name: 'Pea Protein Isolate 85%', function: 'Protein Densifier', wtPercent: 18.0, highlight: true },
+          { name: 'Potato Starch', function: 'Viscosity Sealer', wtPercent: 6.0 },
+          { name: 'Purified Hydration Water', function: 'Hydration Medium', wtPercent: 48.0 },
+          { name: 'Canola Oil (Low Erucic Acid)', function: 'Lipid Moisture Phase', wtPercent: 5.5 },
+          { name: 'Nutritional Yeast (Fortified Flakes)', function: 'Umami Character', wtPercent: 1.5 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Saline Balance', wtPercent: 1.0 }
         ],
         rationales: [
           {
-            title: 'Whole Plant Fiber Synergy',
-            icon: 'spa',
-            description: 'Leverages intact vegetable macrostructures to simulate natural chew and cutting resistance.'
+            title: 'Whole-Food Scaffold Integration',
+            icon: 'nature',
+            description: 'Blends unrefined botanical fibers to mimic animal tissue grain without chemical structuring agents.'
           },
           {
-            title: 'Clean Sensory Profile',
-            icon: 'clean_hands',
-            description: 'Minimizes off-flavors by selecting neutralized botanical cultivars.'
+            title: 'Fiber-Enhanced Satiety',
+            icon: 'health_and_safety',
+            description: 'Provides complex carbohydrates and prebiotic dietary fiber absent in conventional animal-based foods.'
           },
           {
-            title: 'Sustainable Ingredient Sourcing',
-            icon: 'eco',
-            description: 'Prioritizes upcycled agricultural fibers with verified low water footprints.'
+            title: 'Rapid Pilot Viability',
+            icon: 'rocket_launch',
+            description: 'Utilizes off-the-shelf ingredients to allow immediate commercial trial batching without custom tooling.'
           }
         ]
       },
       {
-        name: `Value Scaled ${request.productName} C-3`,
+        name: `Economy Scaled ${request.productName} Blend`,
         code: `VFA-GEN-03`,
-        tagline: `Industrial Scale Prototype • Cost-effective raw material blend designed for commercial extrusion`,
-        baseIsolate: hasGlutenAllergen ? 'Chickpea Flour' : 'Wheat Gluten + Flour',
+        tagline: `Cost-Optimized Industrial Specification • Engineered for high throughput and aggressive margin viability`,
+        baseIsolate: hasSoyAllergen ? 'Chickpea + Pea Protein' : 'Soy + Chickpea Flour',
         tasteMatch: Math.min(88, Math.max(70, Math.round(request.tastePriority * 0.85))),
-        textureParity: Math.min(89, Math.max(71, Math.round(request.texturePriority * 0.86))),
+        textureParity: Math.min(89, Math.max(72, Math.round(request.texturePriority * 0.86))),
         rawIngredients: [
-          hasGlutenAllergen
-            ? { name: 'Chickpea Flour (Besan)', function: 'Primary Flour Matrix', wtPercent: 25.0, highlight: true }
-            : { name: 'Vital Wheat Gluten (Seitan Base)', function: 'Elastic Protein Chew', wtPercent: 18.0, highlight: true },
-          { name: 'Oat Flour (De-hulled Whole Oat)', function: 'Crumb Softness & Body', wtPercent: 12.0 },
-          { name: 'Purified Hydration Water', function: 'Solvent & Hydration', wtPercent: 52.0 },
-          { name: 'Canola Oil (Low Erucic Acid)', function: 'Cost-Effective Lipid', wtPercent: 6.0 },
-          { name: 'Corn Starch', function: 'Starch Thickener', wtPercent: 4.0 },
-          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Seasoning', wtPercent: 2.0 },
-          { name: 'Nutritional Yeast (Fortified Flakes)', function: 'Flavor Enhancer', wtPercent: 1.0 }
+          hasSoyAllergen
+            ? { name: 'Chickpea Flour (Besan)', function: 'Commodity Flour Base', wtPercent: 22.0, highlight: true }
+            : { name: 'Soy Protein Isolate 90%', function: 'High-Density Protein Matrix', wtPercent: 20.0, highlight: true },
+          { name: 'Pea Protein Isolate 85%', function: 'Secondary Protein Fortifier', wtPercent: 10.0 },
+          { name: 'Corn Starch', function: 'Viscosity & Bulk Texturizer', wtPercent: 8.0 },
+          { name: 'Purified Hydration Water', function: 'Process Water', wtPercent: 52.0 },
+          { name: 'High-Oleic Sunflower Oil', function: 'Lipid Dispersion', wtPercent: 6.0 },
+          { name: 'Sea Salt & Natural Flavor Synergy', function: 'Seasoning Balance', wtPercent: 2.0 }
         ],
         rationales: [
           {
-            title: 'Economical Raw Material Cost',
-            icon: 'payments',
-            description: 'Built around scalable agricultural grains and starches to keep raw material costs under commercial targets.'
+            title: 'Maximized Commodity Margin',
+            icon: 'trending_down',
+            description: 'Achieves aggressive price parity against industrialized animal agriculture through high-volume botanical isolates.'
           },
           {
-            title: 'High Extrusion Throughput',
+            title: 'Industrial Machine Compatibility',
             icon: 'precision_manufacturing',
-            description: 'Flow properties tuned for high-shear twin-screw extruders operating at 400 kg/hr pilot capacity.'
+            description: 'Engineered for standard high-speed food processing equipment without requiring specialized tooling.'
           },
           {
-            title: 'Versatile Culinary Behavior',
-            icon: 'restaurant',
-            description: 'Tolerates varied domestic preparation methods including pan-searing, boiling, and deep-frying.'
+            title: 'Global Ingredient Supply Resilience',
+            icon: 'public',
+            description: 'Sourced from resilient, globally distributed legume and grain crops with diversified agricultural supply chains.'
           }
         ]
       }

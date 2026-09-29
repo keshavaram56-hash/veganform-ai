@@ -305,6 +305,197 @@ export const PRODUCT_KNOWLEDGE_BASE: Record<string, ProductKnowledgeRecord> = {
         mechanisticReasoning: 'Hydrated flaxseed mucilage provides non-Newtonian shear thinning: high viscosity when resting on a spoon, instant smooth melt on tongue contact.'
       }
     ]
+  },
+  'salmon': {
+    name: 'Atlantic Salmon',
+    category: 'Anadromous Marine Teleost Matrix',
+    functionalProperties: [
+      'Myotome/myosepta w-shaped lamellar muscle flake cleavage',
+      'Intramuscular lipid marbling rich in long-chain Omega-3 (EPA/DHA)',
+      'Delicate thermal denaturation onset at 45°C - 55°C (low shear modulus)',
+      'Astaxanthin-driven salmon pink/orange chromaticity',
+      'Oceanic fresh savory volatile profile (trimethylamine oxide & free glycine)'
+    ],
+    keyAnimalDerivedComponents: [
+      'Marine teleost actomyosin myotome sheets',
+      'Collagenous myosepta connective sheets (Type I/V collagen)',
+      'Marine polyunsaturated fatty acids (EPA 20:5n-3, DHA 22:6n-3)',
+      'Natural astaxanthin carotenoid pigment'
+    ],
+    benchmarks: {
+      proteinPer100g: 20.4,
+      caloriesPer100g: 208,
+      fatPer100g: 13.4,
+      carbsPer100g: 0.0,
+      fiberPer100g: 0.0,
+      ironPer100g: 0.5,
+      b12Per100g: 3.2,
+      waterContentPercent: 65,
+      referenceCarbonKgPerKg: 11.9,
+      referenceCostPerKg: 420
+    },
+    recommendedSubstitutions: [
+      {
+        animalComponent: 'Myotome muscle sheet lamellar cleavage',
+        functionalRole: 'Tender flaky mouthfeel and delicate sheet separation',
+        suggestedVeganIngredients: ['Pea Protein Isolate 85%', 'Potato Starch', 'Tapioca Starch (Modified Cassava)'],
+        mechanisticReasoning: 'Low-shear wet extrusion paired with botanical starch interpenetrating network replicates the delicate horizontal flaking of cooked salmon myotomes.'
+      },
+      {
+        animalComponent: 'Marine lipid profile & Omega-3 EPA/DHA',
+        functionalRole: 'Lipidic melt, unctuous finish and marine savory aroma',
+        suggestedVeganIngredients: ['Canola Oil (Low Erucic Acid)', 'High-Oleic Sunflower Oil'],
+        mechanisticReasoning: 'Emulsified cold-pressed botanical oil blend fortified with algal micro-lipids recreates the buttery melting point and lipid release of salmon belly.'
+      },
+      {
+        animalComponent: 'Astaxanthin carotenoid & oceanic volatiles',
+        functionalRole: 'Natural coral pink pigmentation and sea umami depth',
+        suggestedVeganIngredients: ['Sea Salt & Natural Flavor Synergy', 'Shiitake & Button Mushroom Extract'],
+        mechanisticReasoning: 'Natural botanical carotenoids from fermented algae provide photostable salmon chroma while kelp and mushroom 5\'-GMP recreate natural marine savory depth.'
+      }
+    ]
+  },
+
+  'fish': {
+    name: 'White Fish Fillet',
+    category: 'Demersal Teleost Muscle Matrix',
+    functionalProperties: [
+      'Delicate, pearlescent lamellar shear flakes with low elastic recoil',
+      'Translucent raw state transitioning to opaque white upon 52°C heat set',
+      'High moisture retention (80% internal water) without syneresis',
+      'Subtle, clean marine salinity with ultra-low fat content (<1.5%)'
+    ],
+    keyAnimalDerivedComponents: [
+      'Cod/pollock myofibrillar actomyosin',
+      'Delicate myocommata connective collagen',
+      'Skeletal moisture phase with trace marine electrolytes'
+    ],
+    benchmarks: {
+      proteinPer100g: 17.8,
+      caloriesPer100g: 82,
+      fatPer100g: 0.8,
+      carbsPer100g: 0.0,
+      fiberPer100g: 0.0,
+      ironPer100g: 0.4,
+      b12Per100g: 1.0,
+      waterContentPercent: 80,
+      referenceCarbonKgPerKg: 5.4,
+      referenceCostPerKg: 280
+    },
+    recommendedSubstitutions: [
+      {
+        animalComponent: 'Delicate pearlescent flake structure',
+        functionalRole: 'Brittle sheet flaking without rubbery resilience',
+        suggestedVeganIngredients: ['Pea Protein Isolate 85%', 'Potato Starch', 'Methylcellulose (Thermal Gel Grade)'],
+        mechanisticReasoning: 'Cold-set methylcellulose and native potato starch form a tender matrix that fractures along distinct planes under fork pressure.'
+      },
+      {
+        animalComponent: 'Clean white marine opacity',
+        functionalRole: 'Pearlescent cooked fish appearance and light savory flavor',
+        suggestedVeganIngredients: ['Tapioca Starch (Modified Cassava)', 'Sea Salt & Natural Flavor Synergy'],
+        mechanisticReasoning: 'Naturally bleached botanical starch granules scatter light evenly, providing the brilliant white appearance of poached cod.'
+      }
+    ]
+  },
+
+  'mutton': {
+    name: 'Braised Mutton',
+    category: 'Ovine Ruminant Muscle Matrix',
+    functionalProperties: [
+      'Dense, slow-twitch oxidative muscle fiber bundles (Type I fibers)',
+      'Branched-chain fatty acid (BCFA) gaminess and persistent tallow finish',
+      'High collagen cross-linking requiring long thermal gelatinization',
+      'Deep burgundy pigmentation from elevated myoglobin concentration',
+      'Rich, lingering savory warmth with high melt viscosity'
+    ],
+    keyAnimalDerivedComponents: [
+      'Ovine myofibrillar actomyosin & slow-twitch fibers',
+      'Intermuscular tallow lipid (stearic & branched-chain fatty acids)',
+      'Type I & III connective tissue collagen matrix',
+      'Heme myoglobin iron complex'
+    ],
+    benchmarks: {
+      proteinPer100g: 20.3,
+      caloriesPer100g: 242,
+      fatPer100g: 17.0,
+      carbsPer100g: 0.0,
+      fiberPer100g: 0.0,
+      ironPer100g: 2.1,
+      b12Per100g: 2.6,
+      waterContentPercent: 61,
+      referenceCarbonKgPerKg: 39.2,
+      referenceCostPerKg: 350
+    },
+    recommendedSubstitutions: [
+      {
+        animalComponent: 'Dense slow-twitch muscle chew',
+        functionalRole: 'Firm, toothsome fiber bundles resistant to braising',
+        suggestedVeganIngredients: ['Pea Protein Isolate 85%', 'Young Green Jackfruit (Shredded Pulp)', 'Vital Wheat Gluten (Seitan Base)'],
+        mechanisticReasoning: 'High-density HMEC extrusion combined with fibrous jackfruit core delivers the deep stringy pull of slow-braised ovine muscle.'
+      },
+      {
+        animalComponent: 'Ovine tallow and branched-chain fat aroma',
+        functionalRole: 'High melting point lipid coat (44°C) and robust gamey finish',
+        suggestedVeganIngredients: ['Refined Coconut Oil', 'High-Oleic Sunflower Oil'],
+        mechanisticReasoning: 'High-stearate botanical fat fractions reproduce the tallow mouth-coating of mutton without off-tasting greasy residue.'
+      },
+      {
+        animalComponent: 'Deep myoglobin and braised savory color',
+        functionalRole: 'Dark mahogany hue and Maillard richness',
+        suggestedVeganIngredients: ['Shiitake & Button Mushroom Extract', 'Nutritional Yeast (Fortified Flakes)'],
+        mechanisticReasoning: 'Mushroom guanylates and botanical polyphenol extracts provide deep caramelized color and rich savory depth.'
+      }
+    ]
+  },
+
+  'beef': {
+    name: 'Ground Beef Patty',
+    category: 'Bovine Skeletal Myofibrillar Matrix',
+    functionalProperties: [
+      'Coarse grind texture with distinct protein granules and fat pockets',
+      'Heme-catalyzed pyrazine aroma upon high-heat griddling (>140°C)',
+      'Biphasic lipid rendering (solid marble at cold, molten sizzle in pan)',
+      'Elastic chew and springy bite rebound from denatured actomyosin',
+      'Deep red to caramelized crust Maillard transition'
+    ],
+    keyAnimalDerivedComponents: [
+      'Bovine myofibrillar actin/myosin fibers',
+      'Adipose tissue triglycerides (high stearic/palmitic tallow)',
+      'Perimysial collagen connective tissue',
+      'Heme-bound myoglobin'
+    ],
+    benchmarks: {
+      proteinPer100g: 21.5,
+      caloriesPer100g: 228,
+      fatPer100g: 15.0,
+      carbsPer100g: 0.0,
+      fiberPer100g: 0.0,
+      ironPer100g: 2.6,
+      b12Per100g: 2.4,
+      waterContentPercent: 62,
+      referenceCarbonKgPerKg: 60.0,
+      referenceCostPerKg: 310
+    },
+    recommendedSubstitutions: [
+      {
+        animalComponent: 'Coarse ground muscle grain and springy bite',
+        functionalRole: 'Firm granular chew and patty cohesion on the grill',
+        suggestedVeganIngredients: ['Pea Protein Isolate 85%', 'Soy Protein Isolate 90%', 'Methylcellulose (Thermal Gel Grade)'],
+        mechanisticReasoning: 'Texturized plant protein granules bound with thermal-gel methylcellulose maintain distinct meat-grain texture without turning mushy.'
+      },
+      {
+        animalComponent: 'Marbled solid fat pockets & sizzle rendering',
+        functionalRole: 'Juiciness release during cooking and caramelized sear',
+        suggestedVeganIngredients: ['Refined Coconut Oil', 'Canola Oil (Low Erucic Acid)'],
+        mechanisticReasoning: 'Discrete solid coconut fat particles melt during griddling, basting the plant protein matrix from within.'
+      },
+      {
+        animalComponent: 'Heme myoglobin & sear aroma',
+        functionalRole: 'Raw color turning mahogany brown with savory roast aroma',
+        suggestedVeganIngredients: ['Shiitake & Button Mushroom Extract', 'Nutritional Yeast (Fortified Flakes)', 'Sea Salt & Natural Flavor Synergy'],
+        mechanisticReasoning: 'Botanical reducing sugars, free amino acids, and mushroom nucleotides react under griddle heat to form pyrazines and furans identical to seared beef.'
+      }
+    ]
   }
 };
 
@@ -323,6 +514,18 @@ export function getProductKnowledge(inputName: string): { record: ProductKnowled
   }
 
   // Common aliases
+  if (clean.includes('salmon')) {
+    return { record: PRODUCT_KNOWLEDGE_BASE['salmon'], isKnown: true };
+  }
+  if (clean.includes('fish') || clean.includes('cod') || clean.includes('pollock') || clean.includes('seafood')) {
+    return { record: PRODUCT_KNOWLEDGE_BASE['fish'], isKnown: true };
+  }
+  if (clean.includes('mutton') || clean.includes('lamb') || clean.includes('goat') || clean.includes('ovine')) {
+    return { record: PRODUCT_KNOWLEDGE_BASE['mutton'], isKnown: true };
+  }
+  if (clean.includes('beef') || clean.includes('steak') || clean.includes('burger') || clean.includes('patty') || clean.includes('bovine')) {
+    return { record: PRODUCT_KNOWLEDGE_BASE['beef'], isKnown: true };
+  }
   if (clean.includes('chicken') || clean.includes('nugget') || clean.includes('poultry') || clean.includes('tender')) {
     return { record: PRODUCT_KNOWLEDGE_BASE['chicken-nugget'], isKnown: true };
   }

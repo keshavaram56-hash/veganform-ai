@@ -11,11 +11,12 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <style>
       body {
-        background-color: #F8FAF9;
-        color: #17201C;
+        background: linear-gradient(150deg, #E8D5C4 0%, #F6E9E4 26%, #FAF2EF 52%, #FBECEF 76%, #F7DDE3 100%);
+        background-attachment: fixed;
+        color: #10231D;
         overscroll-behavior: none;
       }
       /* Custom clean scrollbars */
@@ -24,14 +25,14 @@
         height: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #F1F5F3;
+        background: #F6E9E4;
       }
       ::-webkit-scrollbar-thumb {
-        background: #D1DCD6;
+        background: #DECFC5;
         border-radius: 3px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #A5B6AE;
+        background: #063B2E;
       }
       .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -45,19 +46,19 @@
         height: 18px;
         width: 18px;
         border-radius: 50%;
-        background: #059669;
+        background: #063B2E;
         cursor: pointer;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-        border: 2px solid #FFFFFF;
+        box-shadow: 0 1px 3px rgba(6, 59, 46, 0.25);
+        border: 2px solid #35D39A;
       }
       input[type="range"]::-webkit-slider-runnable-track {
-        background: #E5EAE7;
+        background: #D9E2DC;
         height: 6px;
         border-radius: 9999px;
       }
     </style>
   </head>
-  <body class="bg-[#F8FAF9] text-[#17201C] font-sans antialiased min-h-screen">
+  <body class="text-[#10231D] font-sans antialiased min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

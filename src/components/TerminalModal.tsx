@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, X, RefreshCw, Send, CheckCircle2 } from 'lucide-react';
+import { Activity, X, RefreshCw, Send, CheckCircle2, Terminal } from 'lucide-react';
 
 interface TerminalModalProps {
   isOpen: boolean;
@@ -79,35 +79,36 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/35 backdrop-blur-xs animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#082A23]/40 backdrop-blur-xs animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-3xl bg-white border border-[#E5EAE7] rounded-2xl shadow-dropdown overflow-hidden flex flex-col h-[520px]"
+        className="w-full max-w-3xl bg-white border border-[#D9E2DC] rounded-3xl shadow-dropdown overflow-hidden flex flex-col h-[520px] min-w-0"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Title Bar */}
-        <div className="px-5 py-3.5 bg-[#F8FAF9] border-b border-[#E5EAE7] flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
-            <Activity className="w-4 h-4 text-[#059669]" />
-            <span className="text-xs font-semibold text-[#17201C]">
+        <div className="px-5 py-3.5 bg-[#EEF3ED] border-b border-[#D9E2DC] flex items-center justify-between min-w-0">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="w-2 h-2 rounded-full bg-[#35D39A] animate-pulse shrink-0" />
+            <Activity className="w-4 h-4 text-[#063B2E] shrink-0" />
+            <span className="text-xs font-display font-bold text-[#063B2E] truncate">
               R&amp;D Engine Telemetry &amp; Diagnostics
             </span>
-            <span className="text-[11px] bg-[#ECFDF5] text-[#059669] px-2 py-0.5 rounded border border-[#BBF7D0] font-medium">
-              Live Link
+            <span className="text-[10px] font-mono bg-white text-[#063B2E] px-2 py-0.5 rounded border border-[#0A9F6E]/30 font-semibold shrink-0">
+              CUDA-BIO LIVE
             </span>
           </div>
-          <div className="flex items-center gap-2">
+
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => setLogs([])}
-              className="text-xs text-[#66716B] hover:text-[#17201C] px-2.5 py-1 rounded-md bg-white border border-[#E5EAE7] transition-colors cursor-pointer"
+              className="text-xs font-mono text-[#61706A] hover:text-[#10231D] px-2.5 py-1 rounded-lg bg-white border border-[#D9E2DC] transition-colors cursor-pointer"
             >
               Clear
             </button>
             <button
               onClick={onClose}
-              className="text-[#66716B] hover:text-[#17201C] p-1 rounded-lg hover:bg-[#F3F6F4] transition-colors cursor-pointer"
+              className="text-[#61706A] hover:text-[#10231D] p-1 rounded-xl hover:bg-[#EEF3ED] transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -115,48 +116,48 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Logs Output */}
-        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs text-[#334155] space-y-1.5 bg-[#F8FAF9]">
+        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs text-[#10231D] space-y-1.5 bg-[#F6F7F2]">
           {logs.map((log, i) => (
             <div
               key={i}
-              className={`leading-relaxed ${
+              className={`leading-relaxed break-words ${
                 log.startsWith('$')
-                  ? 'text-[#059669] font-semibold'
+                  ? 'text-[#063B2E] font-bold'
                   : log.includes('[SPECTRO]')
-                  ? 'text-[#0284C7]'
+                  ? 'text-[#8DB9C9]'
                   : log.includes('[PARETO]')
-                  ? 'text-[#D97706]'
+                  ? 'text-[#D99A32]'
                   : log.includes('[READY]')
-                  ? 'text-[#059669] font-medium'
-                  : 'text-[#64748B]'
+                  ? 'text-[#063B2E] font-semibold'
+                  : 'text-[#61706A]'
               }`}
             >
               {log}
             </div>
           ))}
           {isSimulating && (
-            <div className="flex items-center gap-2 text-[#059669] animate-pulse font-medium">
-              <RefreshCw className="w-4 h-4 animate-spin" />
+            <div className="flex items-center gap-2 text-[#063B2E] animate-pulse font-semibold">
+              <RefreshCw className="w-4 h-4 animate-spin text-[#0A9F6E]" />
               <span>Running parallel in-silico texturization tensors...</span>
             </div>
           )}
         </div>
 
         {/* Command Line Input */}
-        <form onSubmit={handleCommand} className="p-3 bg-white border-t border-[#E5EAE7] flex items-center gap-2">
-          <span className="font-mono text-xs text-[#059669] font-bold pl-1">$</span>
+        <form onSubmit={handleCommand} className="p-3 bg-white border-t border-[#D9E2DC] flex items-center gap-2 min-w-0">
+          <span className="font-mono text-xs text-[#063B2E] font-bold pl-1 shrink-0">$</span>
           <input
             type="text"
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder="Type 'help', 'recompute', 'status', or custom bio-query..."
-            className="flex-1 bg-transparent font-mono text-xs text-[#17201C] placeholder-[#66716B]/60 focus:outline-none"
+            className="flex-1 bg-transparent font-mono text-xs text-[#10231D] placeholder-[#61706A]/60 focus:outline-none min-w-0"
           />
           <button
             type="submit"
-            className="px-3.5 py-1.5 bg-[#F0FDF4] border border-[#BBF7D0] text-[#059669] text-xs font-medium rounded-lg hover:bg-[#DCFCE7] transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-3.5 py-1.5 bg-[#063B2E] hover:bg-[#082A23] text-white text-xs font-mono font-medium rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-subtle shrink-0"
           >
-            <Send className="w-3 h-3" />
+            <Send className="w-3 h-3 text-[#35D39A]" />
             <span>Run</span>
           </button>
         </form>
